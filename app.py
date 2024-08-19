@@ -76,19 +76,12 @@ def get_img_mask(image_path, mask_path):
 
     return img, img_obj, mask
 
-def calculate_volumes(mask, spacing_tuple):
-    multiplier_ml = 0.001 * np.prod(spacing_tuple)
-    unique, frequency = np.unique(mask, return_counts=True)
-    volumes = {f'vol_lbl{lbl}': multiplier_ml * freq for lbl, freq in zip(unique, frequency)}
-    return volumes
-
-
 def render_slice(img, mask, x, view):
     if view == 'axial':
         slice_img, slice_mask = img[x, :, :], mask[x, :, :]
     elif view == 'coronal':
         slice_img, slice_mask = img[:, x, :], mask[:, x, :]
-    elif view == 'saggital':
+    elif view == 'sagittal':
         slice_img, slice_mask = img[:, :, x], mask[:, :, x]
     
     slice_img = np.flipud(slice_img)
@@ -119,18 +112,12 @@ def main_func(image_t1c, image_t2f, image_t1n, image_t2w):
 
     return mask_path, f"Segmentation done! Total tumor volume segmented {mydict.get('vol_lbl3', 0) + mydict.get('vol_lbl2', 0) + mydict.get('vol_lbl1', 0):.3f} ml; EDEMA {mydict.get('vol_lbl2', 0):.3f} ml; NECROSIS {mydict.get('vol_lbl3', 0):.3f} ml; ENHANCING TUMOR {mydict.get('vol_lbl1', 0):.3f} ml"
 
-def main_func_example(file_obj):
-    print(file_obj)
-    mask_path, _ = main_func(file_obj)
-    x, state = 10, 10
-    im, another_output_text = render(x, state)
-    return mask_path, im, another_output_text
 
 def render(file_to_render, x, view):
     suffix = {'T2 Flair': 't2f', 'native T1': 't1n', 'post-contrast T1-weighted': 't1c', 'T2 weighted': 't2w'}
     if 'img_path' in mydict:
         get_file = [file for file in mydict['img_path'] if suffix[file_to_render] in file][0]
-        img, _, mask = get_img_mask(get_file, get_file)
+        img, _, mask = get_img_mask(get_file, mydict['mask_path'])
         
         x = max(0, min(x, img.shape[0 if view == 'axial' else (1 if view == 'coronal' else 2)] - 1))
         slice_img, slice_mask = render_slice(img, mask, x, view)
@@ -149,16 +136,15 @@ def render_axial(file_to_render, x):
     return render(file_to_render, x, 'axial')
 def render_coronal(file_to_render, x):
     return render(file_to_render, x, 'coronal')
-def render_saggital(file_to_render, x):
-    return render(file_to_render, x, 'saggital')
+def render_sagittal(file_to_render, x):
+    return render(file_to_render, x, 'sagittal')
 # Gradio UI
 with gr.Blocks() as demo:
-    with gr.Column():
-        gr.Markdown(
-        """
-        # CNMC PMI Pediatric Brain Tumor Segmentation
-        """)
+
+    gr.HTML(value=f"<center><font size='6'><bold> CNMC PMI Pediatric Brain Tumor Segmenter</bold></font></center>")
     gr.HTML(value=f"<p style='margin-top: 1rem, margin-bottom: 1rem'> <img src='{logo.logo}' alt='Childrens National Logo' style='display: inline-block'/></p>")
+    gr.HTML(value=f"<justify><font size='4'> Welcome to the pediatric brain tumor segmentation app that won the prestigious <a href='https://www.synapse.org/Synapse:syn51156910/wiki/627802'>Pediatric Brain Tumor Segmentation Challenge(BraTS) 2023</a>! Our advanced segmentation model, recognized for its exceptional accuracy and reliability, is designed to automate the early detection and precise segmentation of brain tumors in pediatric patients. With this app, you can effortlessly upload pediatric brain MRI sequences and receive detailed, accurate segmentation results in just minutes. The idea is to simplify the analysis process by providing an web based interaction with the segmentation model.</font></justify>")
+    gr.HTML(value=f"<justify><font size='4'> We also provide couple of samples at the bottom of the page for you see the performance of the model.</font></justify>")
 
     with gr.Row():
         image_t1c = gr.File(label="upload t1 contrast enhanced here:", file_types=["nii.gz"])
@@ -179,7 +165,7 @@ with gr.Blocks() as demo:
         with gr.Column():
              gr.Button("", render=False)
         with gr.Column():
-            file_to_render = gr.Dropdown(['T2 Flair','native T1', 'post-contrast T1-weighted', 'T2 weighted'], label='choose file to overlay')
+            file_to_render = gr.Dropdown(['T2 Flair','native T1', 'post-contrast T1-weighted', 'T2 weighted'], label='choose the scan to overlay the segmentation on')
         with gr.Column():
              gr.Button("", render=False)
 
@@ -187,42 +173,42 @@ with gr.Blocks() as demo:
         height = "20vw"
         myimage_axial = gr.AnnotatedImage(label="axial view", height=height)
         myimage_coronal = gr.AnnotatedImage(label="coronal view",height=height)
-        myimage_saggital = gr.AnnotatedImage(label="saggital view",height=height)
+        myimage_sagittal = gr.AnnotatedImage(label="sagittal view",height=height)
     with gr.Row():
         slider_axial = gr.Slider(0, 155, step=1) # max val needs to be updated by user.
         state_axial = gr.State(value=75)
         slider_coronal = gr.Slider(0, 155, step=1) # max val needs to be updated by user.
         state_coronal = gr.State(value=75)
-        slider_saggital = gr.Slider(0, 155, step=1) # max val needs to be updated by user.
-        state_saggital = gr.State(value=75)
+        slider_sagittal = gr.Slider(0, 155, step=1) # max val needs to be updated by user.
+        state_sagittal = gr.State(value=75)
 
     with gr.Row():
-        mask_file = gr.File(label="download annotation", height="vw" )
+        mask_file = gr.File(label="download segmentation file", height="vw" )
 
-    example_1 = [[
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00210-000/BraTS-PED-00210-000-t1c.nii.gz",
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00210-000/BraTS-PED-00210-000-t2f.nii.gz",
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00210-000/BraTS-PED-00210-000-t1n.nii.gz",
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00210-000/BraTS-PED-00210-000-t2w.nii.gz",
-    ]]
+    example_1 = [
+        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00030-000/BraTS-PED-00030-000-t1c.nii.gz",
+        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00030-000/BraTS-PED-00030-000-t2f.nii.gz",
+        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00030-000/BraTS-PED-00030-000-t1n.nii.gz",
+        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00030-000/BraTS-PED-00030-000-t2w.nii.gz",
+    ]
     example_2 =[
-    [
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00208-000/BraTS-PED-00208-000-t1c.nii.gz",
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00208-000/BraTS-PED-00208-000-t2f.nii.gz",
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00208-000/BraTS-PED-00208-000-t1n.nii.gz",
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00208-000/BraTS-PED-00208-000-t2w.nii.gz",
-    ]]
+    
+        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00071-000/BraTS-PED-00071-000-t1c.nii.gz",
+        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00071-000/BraTS-PED-00071-000-t2f.nii.gz",
+        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00071-000/BraTS-PED-00071-000-t1n.nii.gz",
+        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00071-000/BraTS-PED-00071-000-t2w.nii.gz",
+    ]
 
 
-    gr.HTML(value=f"<center><font size='2'> The software provided 'as is', without any warranty or liability.  For research use only and not intended for medical diagnosis. We do not store or access any information uploaded to the platform. This version is v20240815</font></center>")
-    # gr.Examples(
-    #     examples=[example_1, example_2],
-    #     inputs=[image_folder],
-    #     outputs=[mask_file,out_text],
-    #     fn=main_func,
-    #     cache_examples=False,
-    #     label="Preloaded BraTS 2023 examples"
-    # )
+    gr.HTML(value=f"<center><font size='2'> The software is provided 'as is', without any warranties or liabilities.  For research use only and not intended for medical diagnosis. We do not store or access any information uploaded to the platform. This version is v20240815</font></center>")
+    gr.Examples(
+        examples=[example_1, example_2],
+        inputs=[image_t1c, image_t2f, image_t1n, image_t2w],
+        outputs=[mask_file,out_text],
+        fn=main_func,
+        cache_examples=False,
+        label="Preloaded BraTS 2023 examples"
+    )
     
     btn.click(fn=main_func, 
         inputs=[image_t1c, image_t2f, image_t1n, image_t2w], outputs=[mask_file, out_text],
@@ -233,9 +219,9 @@ with gr.Blocks() as demo:
     file_to_render.select(render_coronal,
         inputs=[file_to_render, state_coronal],
         outputs=[myimage_coronal])
-    file_to_render.select(render_saggital,
-        inputs=[file_to_render, state_saggital],
-        outputs=[myimage_saggital])
+    file_to_render.select(render_sagittal,
+        inputs=[file_to_render, state_sagittal],
+        outputs=[myimage_sagittal])
 
     slider_axial.change(
         render_axial,
@@ -249,10 +235,10 @@ with gr.Blocks() as demo:
         outputs=[myimage_coronal],
         api_name="hohoho"
     )
-    slider_saggital.change(
-        render_saggital,
-        inputs=[file_to_render, slider_saggital],
-        outputs=[myimage_saggital],
+    slider_sagittal.change(
+        render_sagittal,
+        inputs=[file_to_render, slider_sagittal],
+        outputs=[myimage_sagittal],
         api_name="hohoho"
     )
 
