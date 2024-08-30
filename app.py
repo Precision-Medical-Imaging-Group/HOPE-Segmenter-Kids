@@ -46,12 +46,12 @@ def run_inference(image_t1c, image_t2f, image_t1n, image_t2w):
     # delete original files
     for _, file in image_paths.items():
         subprocess.run(f"rm  {file}", shell=True)
-
-    mlcube_cmd =f"docker run --shm-size=2gb --gpus=all -v {input_path.parent}:/input/ -v {output_folder.absolute()}:/output aparida12/brats-peds-2023:ped infer --data_path /input/ --output_path /output/"
+    docker = "aparida12/brats-peds-2024:v20240827"
+    mlcube_cmd =f"docker run --shm-size=2gb --gpus=all -v {input_path.parent}:/input/ -v {output_folder.absolute()}:/output {docker} infer --data_path /input/ --output_path /output/"
     #mlcube_cmd = f"cd ./segmenter/mlcube; mlcube run --gpus device=1 --task infer data_path={input_path}/ output_path=../outs"
     print(mlcube_cmd)
     subprocess.run(mlcube_cmd, shell=True)
-    subprocess.run(f"mv {fake_output_path} {output_path}", shell=True)
+    subprocess.run(f"mv -f {fake_output_path} {output_path}", shell=True)
 
     return str(input_path), str(output_path)
 
@@ -106,11 +106,15 @@ def main_func(image_t1c, image_t2f, image_t1n, image_t2w):
     spacing_tuple = img_obj.GetSpacing()
     multiplier_ml = 0.001 * spacing_tuple[0] * spacing_tuple[1] * spacing_tuple[2]
     unique, frequency = np.unique(mask, return_counts = True)
+    total_sum = 0
     for i, lbl in enumerate(unique):
-        mydict[f'vol_lbl{lbl}'] = multiplier_ml * frequency[i]
+        ml_vol = multiplier_ml * frequency[i]
+        mydict[f'vol_lbl{int(lbl)}'] = ml_vol
+        if lbl != 0:
+            total_sum += ml_vol
 
-
-    return mask_path, f"Segmentation done! Total tumor volume segmented {mydict.get('vol_lbl3', 0) + mydict.get('vol_lbl2', 0) + mydict.get('vol_lbl1', 0):.3f} ml; EDEMA {mydict.get('vol_lbl2', 0):.3f} ml; NECROSIS {mydict.get('vol_lbl3', 0):.3f} ml; ENHANCING TUMOR {mydict.get('vol_lbl1', 0):.3f} ml"
+        mydict[f'vol_total'] = total_sum
+    return mask_path, f"Segmentation done! Total tumor volume segmented {mydict.get('vol_total', 0):.3f} ml; EDEMA(ED) {mydict.get('vol_lbl4', 0):.3f} ml; ENHANCING TUMOR(ET) {mydict.get('vol_lbl1', 0):.3f} ml; NON-ENHANCING TUMOR CORE(NETC) {mydict.get('vol_lbl2', 0):.3f} ml; CYSTIC COMPONENT(CC) {mydict.get('vol_lbl3', 0):.3f} ml"
 
 
 def render(file_to_render, x, view):
@@ -124,9 +128,10 @@ def render(file_to_render, x, view):
         
         im = PIL.Image.fromarray(slice_img.astype(np.uint8))
         annotations = [
-            (slice_mask == 1, f"enhancing tumor: {mydict.get('vol_lbl1', 0):.3f} ml"),
-            (slice_mask == 2, f"edema: {mydict.get('vol_lbl2', 0):.3f} ml"),
-            (slice_mask == 3, f"necrosis: {mydict.get('vol_lbl3', 0):.3f} ml")
+            (slice_mask == 1, f"ET: {mydict.get('vol_lbl1', 0):.3f} ml"),
+            (slice_mask == 2, f"NETC: {mydict.get('vol_lbl2', 0):.3f} ml"),
+            (slice_mask == 3, f"CC: {mydict.get('vol_lbl3', 0):.3f} ml"),
+            (slice_mask == 4, f"ED: {mydict.get('vol_lbl4', 0):.3f} ml")
         ]
         return im, annotations
     else:
@@ -141,10 +146,10 @@ def render_sagittal(file_to_render, x):
 # Gradio UI
 with gr.Blocks() as demo:
 
-    gr.HTML(value=f"<center><font size='6'><bold> CNMC PMI Pediatric Brain Tumor Segmenter</bold></font></center>")
+    gr.HTML(value=f"<center><font size='6'><bold> Children's National Pediatric Brain Tumor Segmenter</bold></font></center>")
     gr.HTML(value=f"<p style='margin-top: 1rem, margin-bottom: 1rem'> <img src='{logo.logo}' alt='Childrens National Logo' style='display: inline-block'/></p>")
     gr.HTML(value=f"<justify><font size='4'> Welcome to the pediatric brain tumor segmentation app that won the prestigious <a href='https://www.synapse.org/Synapse:syn51156910/wiki/627802'>Pediatric Brain Tumor Segmentation Challenge(BraTS) 2023</a>! Our advanced segmentation model, recognized for its exceptional accuracy and reliability, is designed to automate the early detection and precise segmentation of brain tumors in pediatric patients. With this app, you can effortlessly upload pediatric brain MRI sequences and receive detailed, accurate segmentation results in just minutes. The idea is to simplify the analysis process by providing an web based interaction with the segmentation model.</font></justify>")
-    gr.HTML(value=f"<justify><font size='4'> We also provide couple of samples at the bottom of the page for you see the performance of the model.</font></justify>")
+    gr.HTML(value=f"<justify><font size='4'> We also provide couple of samples at the bottom of the page for you see the performance of the model. To stay updated with the different model updates sign up <a href='https://forms.gle/e634eJzoimhHnJ7W9'>here</a>. If you would like to receive a dockerized version of the model reach out to <a href='mailto:mlingura@childrensnational.org'>Marius George Linguraru</a> with details how you would like to use the docker container.</font></justify>")
 
     with gr.Row():
         image_t1c = gr.File(label="upload t1 contrast enhanced here:", file_types=["nii.gz"])
@@ -185,24 +190,15 @@ with gr.Blocks() as demo:
     with gr.Row():
         mask_file = gr.File(label="download segmentation file", height="vw" )
 
-    example_1 = [
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00030-000/BraTS-PED-00030-000-t1c.nii.gz",
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00030-000/BraTS-PED-00030-000-t2f.nii.gz",
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00030-000/BraTS-PED-00030-000-t1n.nii.gz",
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00030-000/BraTS-PED-00030-000-t2w.nii.gz",
-    ]
-    example_2 =[
+    example_dir = '/home/pmilab/Abhijeet/examples/'
+    generate_examples = glob.glob(example_dir + '*')
+    order_list = ['-t1c.nii.gz', '-t2f.nii.gz', '-t1n.nii.gz', '-t2w.nii.gz']
+    example_list = [[os.path.join(path, str(Path(path).name)+ending) for ending in order_list] for path in generate_examples]
+
     
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00071-000/BraTS-PED-00071-000-t1c.nii.gz",
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00071-000/BraTS-PED-00071-000-t2f.nii.gz",
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00071-000/BraTS-PED-00071-000-t1n.nii.gz",
-        "/home/pmilab/Xinyang/data/BraTS2023/ASNR-MICCAI-BraTS2023-PED-Challenge-ValidationData/BraTS-PED-00071-000/BraTS-PED-00071-000-t2w.nii.gz",
-    ]
-
-
-    gr.HTML(value=f"<center><font size='2'> The software is provided 'as is', without any warranties or liabilities.  For research use only and not intended for medical diagnosis. We do not store or access any information uploaded to the platform. This version is v20240815</font></center>")
+    gr.HTML(value=f"<center><font size='2'> The software is provided 'as is', without any warranties or liabilities.  For research use only and not intended for medical diagnosis. We do not store or access any information uploaded to the platform. This version is v20240827.</font></center>")
     gr.Examples(
-        examples=[example_1, example_2],
+        examples=example_list,
         inputs=[image_t1c, image_t2f, image_t1n, image_t2w],
         outputs=[mask_file,out_text],
         fn=main_func,
