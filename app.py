@@ -196,7 +196,7 @@ with gr.Blocks() as demo:
     example_list = [[os.path.join(path, str(Path(path).name)+ending) for ending in order_list] for path in generate_examples]
 
     
-    gr.HTML(value=f"<center><font size='2'> The software is provided 'as is', without any warranties or liabilities.  For research use only and not intended for medical diagnosis. We do not store or access any information uploaded to the platform. This version is v20240827.</font></center>")
+    # gr.HTML(value=f"<center><font size='2'> The software is provided 'as is', without any warranties or liabilities.  For research use only and not intended for medical diagnosis. We do not store or access any information uploaded to the platform. This version is v20240827.</font></center>")
     gr.Examples(
         examples=example_list,
         inputs=[image_t1c, image_t2f, image_t1n, image_t2w],
