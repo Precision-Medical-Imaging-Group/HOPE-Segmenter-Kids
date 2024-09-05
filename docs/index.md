@@ -2,7 +2,7 @@
 layout: default
 ---
 
-[Return to the application](https://caring-dragon-creative.ngrok-free.app/).
+I have read the instructions and agree with the terms. [Return to the application](https://caring-dragon-creative.ngrok-free.app/).
 
 The **Pediatric Brain Tumor Segmenter** is a free, open-source web-based application
 designed at [Children's National Hospital](https://www.childrensnational.org/) 
@@ -86,3 +86,5 @@ report issues or provide feedback, please fill out the
 * For more information, collaboration, or to receive the model in a Docker container 
 for testing on large datasets locally, please contact 
 **Prof. Marius George Linguraru** [mlingura@childrensnational.org](mailto:mlingura@childrensnational.org) with details on your intended use. 
+
+I have read the instructions and agree with the terms. [Return to the application](https://caring-dragon-creative.ngrok-free.app/).
