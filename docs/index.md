@@ -2,15 +2,22 @@
 layout: default
 ---
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+[Return to the application](https://caring-dragon-creative.ngrok-free.app/).
 
-[Link to another page](./another-page.html).
+The **Pediatric Brain Tumor Segmenter** is a free, open-source web-based application
+designed at [Children's National Hospital](https://www.childrensnational.org/) 
+for the segmentation and analysis of pediatric brain tumors in magnetic resonance imaging (MRI). 
+Developed in Python, this software aims to provide precise quantitative analysis 
+of pediatric brain MRI, to support clinical decision-making in diagnosis and prognosis.  
 
-There should be whitespace between paragraphs.
+With its user-friendly interface, the Segmenter provides automated segmentation 
+and volumetric measurements within minutes after uploading the required four MRI sequences. 
+This software provides **state-of-the-art performance** powered by our benchmarked 
+segmentation model, which was the **top-performing model** in the pediatric competition of the 
+well-established international Brain Tumor Segmentation Challenge 
+[BraTS2023](https://www.synapse.org/Synapse:syn51156910/wiki/627802).  
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
-
-# Header 1
+# Usage
 
 This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
 
