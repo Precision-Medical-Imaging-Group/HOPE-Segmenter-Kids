@@ -148,9 +148,9 @@ with gr.Blocks() as demo:
 
     gr.HTML(value=f"<center><font size='6'><bold> Children's National Pediatric Brain Tumor Segmenter</bold></font></center>")
     gr.HTML(value=f"<p style='margin-top: 1rem, margin-bottom: 1rem'> <img src='{logo.logo}' alt='Childrens National Logo' style='display: inline-block'/></p>")
-    gr.HTML(value=f"<justify><font size='4'> Welcome to the pediatric brain tumor segmentation app that won the prestigious <a href='https://www.synapse.org/Synapse:syn51156910/wiki/627802'>Pediatric Brain Tumor Segmentation Challenge(BraTS) 2023</a>! Our advanced segmentation model, recognized for its exceptional accuracy and reliability, is designed to automate the early detection and precise segmentation of brain tumors in pediatric patients. With this app, you can effortlessly upload pediatric brain MRI sequences and receive detailed, accurate segmentation results in just minutes. The idea is to simplify the analysis process by providing an web based interaction with the segmentation model.</font></justify>")
-    gr.HTML(value=f"<justify><font size='4'> We also provide couple of samples at the bottom of the page for you see the performance of the model. To stay updated with the different model updates sign up <a href='https://forms.gle/e634eJzoimhHnJ7W9'>here</a>. If you would like to receive a dockerized version of the model reach out to <a href='mailto:mlingura@childrensnational.org'>Marius George Linguraru</a> with details how you would like to use the docker container.</font></justify>")
-
+    # gr.HTML(value=f"<justify><font size='4'> Welcome to the pediatric brain tumor segmentation app that won the prestigious <a href='https://www.synapse.org/Synapse:syn51156910/wiki/627802'>Pediatric Brain Tumor Segmentation Challenge(BraTS) 2023</a>! Our advanced segmentation model, recognized for its exceptional accuracy and reliability, is designed to automate the early detection and precise segmentation of brain tumors in pediatric patients. With this app, you can effortlessly upload pediatric brain MRI sequences and receive detailed, accurate segmentation results in just minutes. The idea is to simplify the analysis process by providing an web based interaction with the segmentation model.</font></justify>")
+    # gr.HTML(value=f"<justify><font size='4'> We also provide couple of samples at the bottom of the page for you see the performance of the model. To stay updated with the different model updates sign up <a href='https://forms.gle/e634eJzoimhHnJ7W9'>here</a>. If you would like to receive a dockerized version of the model reach out to <a href='mailto:mlingura@childrensnational.org'>Marius George Linguraru</a> with details how you would like to use the docker container.</font></justify>")
+    gr.HTML(value=f"<justify><font size='4'> Welcome to the pediatric brain tumor segmenter. Please read the <a href='https://precision-medical-imaging-group.github.io/SegmenterApp-Segmenter-Peds/'>instructions</a> before using the application. </font></justify>")
     with gr.Row():
         image_t1c = gr.File(label="upload t1 contrast enhanced here:", file_types=["nii.gz"])
         image_t2f = gr.File(label="upload t2 flair here:", file_types=["nii.gz"])
@@ -160,7 +160,7 @@ with gr.Blocks() as demo:
         with gr.Column():
              gr.Button("", render=False)
         with gr.Column():
-            btn = gr.Button("start segmentation")
+            btn = gr.Button("Start Segmentation")
         with gr.Column():
              gr.Button("", render=False)
     with gr.Column():
@@ -188,7 +188,7 @@ with gr.Blocks() as demo:
         state_sagittal = gr.State(value=75)
 
     with gr.Row():
-        mask_file = gr.File(label="download segmentation file", height="vw" )
+        mask_file = gr.File(label="Download Segmentation File", height="vw" )
 
     example_dir = '/home/pmilab/Abhijeet/examples/'
     generate_examples = glob.glob(example_dir + '*')
