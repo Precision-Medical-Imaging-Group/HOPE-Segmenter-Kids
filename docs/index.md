@@ -86,10 +86,10 @@ All uploaded and generated data are automatically deleted once the webpage is cl
 
 * New features are continually being developed. To stay informed about updates, 
 report issues or provide feedback, please fill out the 
-**online form** [here](https://docs.google.com/forms/d/e/1FAIpQLSfkH4l3Dcd1qNnH_dLgbiUAQWGKeSAnbBr3ndMwD5yhoZ7Pfw/viewform).   
+**online form** [here](https://docs.google.com/forms/d/e/1FAIpQLSfkH4l3Dcd1qNnH_dLgbiUAQWGKeSAnbBr3ndMwD5yhoZ7Pfw/viewform) or contact [support@hope4kids.io](mailto:support@hope4kids.io) .   
 
 * For more information, collaboration, or to receive the model in a Docker container 
 for testing on large datasets locally, please contact 
-**Prof. Marius George Linguraru** [mlingura@childrensnational.org](mailto:mlingura@childrensnational.org) with details on your intended use. 
+**Prof. Marius George Linguraru** [contact@hope4kids.io](mailto:contact@hope4kids.io) with details on your intended use. 
 
 **I have read the instructions and agree with the terms.** [Return to the application](https://segmenter.hope4kids.io/).
