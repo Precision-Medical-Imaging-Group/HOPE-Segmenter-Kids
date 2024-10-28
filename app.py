@@ -16,6 +16,7 @@ logger = logging.getLogger(__file__)
 DUMMY_DIR = "BraTS-PED-00019-000"
 DUMMY_FILE_NAMES = {modality : f"{DUMMY_DIR}-{modality}.nii.gz" for modality in ["t1c", "t2f", "t1n", "t2w"]}
 
+docker = "aparida12/brats-peds-2024:v20240913"
 
 mydict = {}
 
@@ -46,7 +47,7 @@ def run_inference(image_t1c, image_t2f, image_t1n, image_t2w):
     # delete original files
     for _, file in image_paths.items():
         subprocess.run(f"rm  {file}", shell=True)
-    docker = "aparida12/brats-peds-2024:v20240913"
+    
     mlcube_cmd =f"docker run --shm-size=2gb --gpus=all -v {input_path.parent}:/input/ -v {output_folder.absolute()}:/output {docker} infer --data_path /input/ --output_path /output/"
     #mlcube_cmd = f"cd ./segmenter/mlcube; mlcube run --gpus device=1 --task infer data_path={input_path}/ output_path=../outs"
     print(mlcube_cmd)
