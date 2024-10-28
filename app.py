@@ -26,7 +26,7 @@ def run_inference(image_t1c, image_t2f, image_t1n, image_t2w):
         image_paths (list): List of image paths
 
     Returns:
-        path.like, path.like: inpuit path, output path
+        path.like, path.like: input path, output path
     """
     image_paths = {
         "t1c": image_t1c, 
@@ -46,7 +46,7 @@ def run_inference(image_t1c, image_t2f, image_t1n, image_t2w):
     # delete original files
     for _, file in image_paths.items():
         subprocess.run(f"rm  {file}", shell=True)
-    docker = "aparida12/brats-peds-2024:v20240827"
+    docker = "aparida12/brats-peds-2024:v20240913"
     mlcube_cmd =f"docker run --shm-size=2gb --gpus=all -v {input_path.parent}:/input/ -v {output_folder.absolute()}:/output {docker} infer --data_path /input/ --output_path /output/"
     #mlcube_cmd = f"cd ./segmenter/mlcube; mlcube run --gpus device=1 --task infer data_path={input_path}/ output_path=../outs"
     print(mlcube_cmd)
@@ -203,7 +203,7 @@ with gr.Blocks() as demo:
         outputs=[mask_file,out_text],
         fn=main_func,
         cache_examples=False,
-        label="Preloaded BraTS 2023 examples"
+        label="Preloaded BraTS 2024 examples"
     )
     
     btn.click(fn=main_func, 
@@ -240,4 +240,4 @@ with gr.Blocks() as demo:
 
 
 if __name__ == "__main__":
-    demo.queue().launch(server_name="0.0.0.0")
+    demo.queue().launch(server_name="0.0.0.0", server_port=7860)
