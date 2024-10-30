@@ -1,5 +1,7 @@
 # HOPE Segmenter
 
+<img alt="Example Screenshot" src="https://raw.githubusercontent.com/Precision-Medical-Imaging-Group/HOPE-Segmenter-Kids/refs/heads/main/docs/assets/img/Segmentation.png">
+
 ## Docker & Singularity
 
 To run the algorithm using a docker or singularity container on your local data follow the steps provided at [docker hub](https://hub.docker.com/repository/docker/aparida12/brats-peds-2024).
