@@ -47,7 +47,7 @@ Select one and click the **Start Segmentation** button to see how the software w
 
 The current version of the software is ![v1.0](https://img.shields.io/badge/v1.0-brightgreen) 
 and the source code is publicly available on GitHub 
-([code](https://github.com/Precision-Medical-Imaging-Group/BraTS2024-PEDS)) 
+([code](https://github.com/Precision-Medical-Imaging-Group/HOPE-Segmenter-Kids)) 
 under license [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). 
 
 The software is developed and maintained by the [Precision Medical Imaging](https://research.childrensnational.org/labs/precision-medical) lab
