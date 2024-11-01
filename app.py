@@ -412,9 +412,11 @@ with gr.Blocks() as demo:
         with gr.Column():
             gr.Button("", visible=False)  # Spacer
         with gr.Column():
+            dropdown_modality = ["T2 Flair","native T1", "post-contrast T1-weighted", "T2 weighted"]
             file_to_render = gr.Dropdown(
-                ["T2 Flair", "native T1", "post-contrast T1-weighted", "T2 weighted"],
-                label="Choose the Scan to Overlay the Segmentation On",
+                dropdown_modality,
+                value =  dropdown_modality[0],
+                label='Choose the scan to overlay the segmentation on'
             )
         with gr.Column():
             gr.Button("", visible=False)  # Spacer
