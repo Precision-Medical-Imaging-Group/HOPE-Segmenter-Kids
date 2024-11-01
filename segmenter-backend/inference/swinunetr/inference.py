@@ -35,7 +35,7 @@ from monai.transforms import (
     RandFlipd,
     RandAdjustContrastd,
     RandSimulateLowResolutiond,
-    ToTensord
+    ToTensord,
 )
 
 from monai.data import DataLoader, CacheDataset, decollate_batch
@@ -63,16 +63,16 @@ parser.add_argument('--roi_y', default=128, type=int, help='roi size in y direct
 parser.add_argument('--roi_z', default=128, type=int, help='roi size in z direction')
 parser.add_argument('--posrate', default=1.0, type=float, help='positive label rate')
 parser.add_argument('--negrate', default=1.0, type=float, help='negative label rate')
-parser.add_argument('--nsamples', default=1, type=int, help='number of croped samples')
+parser.add_argument('--nsamples', default=1, type=int, help='number of cropped samples')
 parser.add_argument('--dropout_rate', default=0.0, type=float, help='dropout rate')
 parser.add_argument('--distributed', action='store_true', help='start distributed training')
 parser.add_argument('--cacherate', default=1.0, type=float, help='cache data rate')
 parser.add_argument('--workers', default=8, type=int, help='number of workers')
-parser.add_argument('--batch_size', default=1, type=int, help='number of batch size')
-parser.add_argument('--RandFlipd_prob', default=0.2, type=float, help='RandFlipd aug probability')
-parser.add_argument('--RandRotate90d_prob', default=0.2, type=float, help='RandRotate90d aug probability')
-parser.add_argument('--RandScaleIntensityd_prob', default=0.1, type=float, help='RandScaleIntensityd aug probability')
-parser.add_argument('--RandShiftIntensityd_prob', default=0.1, type=float, help='RandShiftIntensityd aug probability')
+parser.add_argument('--batch_size', default=1, type=int, help='batch size')
+parser.add_argument('--RandFlipd_prob', default=0.2, type=float, help='RandFlipd augmentation probability')
+parser.add_argument('--RandRotate90d_prob', default=0.2, type=float, help='RandRotate90d augmentation probability')
+parser.add_argument('--RandScaleIntensityd_prob', default=0.1, type=float, help='RandScaleIntensityd augmentation probability')
+parser.add_argument('--RandShiftIntensityd_prob', default=0.1, type=float, help='RandShiftIntensityd augmentation probability')
 parser.add_argument('--spatial_dims', default=3, type=int, help='spatial dimension of input data')
 parser.add_argument('--use_checkpoint', action='store_true', help='use gradient checkpointing to save memory')
 parser.add_argument('--pretrained_dir', default='./pretrained_models/fold1_f48_ep300_4gpu_dice0_9059/', type=str,
@@ -85,21 +85,22 @@ def load_json(path: Path) -> Any:
     Loads a JSON file from the specified path.
 
     Args:
-        path: A Path representing the file path.
+        path (Path): A Path representing the file path.
 
     Returns:
-        The data loaded from the JSON file.
+        Any: The data loaded from the JSON file.
     """
     with open(path, 'r') as f:
         return json.load(f)
+
 
 def save_json(path: Path, data: Any) -> None:
     """
     Saves data to a JSON file at the specified path.
 
     Args:
-        path: A Path representing the file path.
-        data: The data to be serialized and saved.
+        path (Path): A Path representing the file path.
+        data (Any): The data to be serialized and saved.
     """
     with open(path, 'w') as f:
         json.dump(data, f, indent=4)
@@ -107,50 +108,62 @@ def save_json(path: Path, data: Any) -> None:
 
 class ConvertToMultiChannelBasedOnBratsPEDClassesd(MapTransform):
     """
-    Convert labels to multi channels based on new brats 2023 classes:
-    label 2 is the peritumoral edema
-    label 3 is the GD-enhancing tumor
-    label 1 is the necrotic and non-enhancing tumor core
-    The possible classes are TC (Tumor core), WT (Whole tumor)
+    Convert labels to multi channels based on new BraTS2023 classes:
+    label 2 is the peritumoral edema,
+    label 3 is the GD-enhancing tumor,
+    label 1 is the necrotic and non-enhancing tumor core.
+    
+    The possible classes are TC (Tumor core), WT (Whole tumor),
     and ET (Enhancing tumor).
-
     """
 
-    def __call__(self, data):
+    def __call__(self, data: Dict[str, Any]) -> Dict[str, Any]:
         d = dict(data)
         for key in self.keys:
             result = []
-            # merge label 1, 2, 3, 4 to construct WT
-            result.append(torch.logical_or(torch.logical_or(torch.logical_or(d[key] == 1, d[key] == 2), d[key] == 3), d[key] == 4))
-            # merge label 1, 2, 3 to construct TC
-            result.append(torch.logical_or(torch.logical_or(d[key] == 2, d[key] == 3), d[key] == 1))
-            # merge label 1, 2 to construct NET
+            # Merge label 1, 2, 3, 4 to construct WT
+            result.append(torch.logical_or(
+                torch.logical_or(torch.logical_or(d[key] == 1, d[key] == 2), d[key] == 3),
+                d[key] == 4
+            ))
+            # Merge label 1, 2, 3 to construct TC
+            result.append(torch.logical_or(
+                torch.logical_or(d[key] == 2, d[key] == 3),
+                d[key] == 1
+            ))
+            # Merge label 1, 2 to construct NET
             result.append(torch.logical_or(d[key] == 1, d[key] == 2))
-            # label 1 is ET
+            # Label 1 is ET
             result.append(d[key] == 1)
             d[key] = torch.stack(result, axis=0).float()
-        return d    
+        return d
 
 
-def get_loader(args):
+def get_loader(args: argparse.Namespace) -> DataLoader:
     """
-    Load data sets for training, validation and testing from json files
+    Load datasets for training, validation, and testing from JSON files.
+
+    Args:
+        args (argparse.Namespace): Parsed command-line arguments.
+
+    Returns:
+        DataLoader: DataLoader for the validation dataset.
     """
     data_root = Path(args.datadir)
-    #data_root = Path(args.data_dir)
-    channel_order= ['-t1n.nii.gz', '-t1c.nii.gz','-t2w.nii.gz','-t2f.nii.gz']
+    # data_root = Path(args.data_dir)
+    channel_order = ['-t1n.nii.gz', '-t1c.nii.gz', '-t2w.nii.gz', '-t2f.nii.gz']
     img_paths = [f"{data_root.name}{c}" for c in channel_order]
 
     # val_data = json_data['validation']
     val_data = [{'image': img_paths}]
-    #val_data = load_json(args.jsonlist)['validation']
+    # val_data = load_json(args.jsonlist)['validation']
 
-    # add data root to json file lists 
-    for i in range(0, len(val_data)):
+    # Add data root to JSON file lists
+    for i in range(len(val_data)):
         val_data[i]['label'] = ""
-        for j in range(0, len(val_data[i]['image'])):
+        for j in range(len(val_data[i]['image'])):
             val_data[i]['image'][j] = str(data_root / val_data[i]['image'][j])
-        
+
     val_transform = Compose(
         [
             LoadImaged(keys=["image"], image_only=False),
@@ -160,9 +173,9 @@ def get_loader(args):
         ]
     )
     val_ds = CacheDataset(
-        data=val_data, 
-        transform=val_transform, 
-        cache_rate=args.cacherate, 
+        data=val_data,
+        transform=val_transform,
+        cache_rate=args.cacherate,
         num_workers=args.workers
     )
     val_loader = DataLoader(
@@ -174,28 +187,39 @@ def get_loader(args):
     )
 
     return val_loader
-    
 
-def main():
+
+def main() -> None:
+    """
+    Main function to perform Swin UNETR segmentation inference.
+
+    This function parses command-line arguments, sets up logging,
+    loads the validation data, initializes the model, performs inference
+    on the validation dataset, and saves the segmentation results.
+    """
     time0 = time.time()
     args = parser.parse_args()
     output_directory = Path(args.exp_path)
     if not output_directory.exists():
         output_directory.mkdir(parents=True)
-        
+    
+    # Configure logging
     logging.basicConfig(
-        filename=output_directory / 'infer.log', 
+        filename=output_directory / 'infer.log',
         filemode='w',
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
 
-    val_loader = get_loader(args)    
+    # Load validation data
+    val_loader = get_loader(args)
     pretrained_dir = args.pretrained_dir
     model_name = args.pretrained_model_name
     pretrained_pth = Path(pretrained_dir) / model_name
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    
+    # Initialize the SwinUNETR model
     model = SwinUNETR(
         img_size=(args.roi_x, args.roi_y, args.roi_z),
         in_channels=args.in_channels,
@@ -207,11 +231,13 @@ def main():
         use_checkpoint=args.use_checkpoint
     )
 
+    # Load pretrained model weights
     model_dict = torch.load(pretrained_pth, map_location=device)['model']
     model.load_state_dict(model_dict)
     model.eval()
     model.to(device)
 
+    # Set up the inference function with sliding window
     model_inferer_test = partial(
         sliding_window_inference,
         roi_size=[args.roi_x, args.roi_y, args.roi_z],
@@ -220,25 +246,30 @@ def main():
         overlap=args.infer_overlap,
     )
     
+    # Set up activation function
     post_trans = Activations(sigmoid=not args.pred_label, softmax=args.pred_label)
-    
+
     with torch.no_grad():
         for i, batch in enumerate(val_loader):
             image = batch["image"].cuda()
             affine = batch['image_meta_dict']['original_affine'][0].numpy()
             filepath = Path(batch['image_meta_dict']['filename_or_obj'][0])
             img_name = filepath.name.split('.nii.gz')[0]
-            output_pred =  model_inferer_test(image)
+            
+            # Perform inference
+            output_pred = model_inferer_test(image)
             logging.info(f"Inference on case {img_name}")
             logging.info(f"Label-wise: {args.pred_label}")
             logging.info(f"Image shape: {image.shape}")
             logging.info(f"Prediction shape: {output_pred.shape}")
             
+            # Apply activation and convert to NumPy
             prob = [post_trans(i) for i in decollate_batch(output_pred)]
             prob_np = prob[0].detach().cpu().numpy()
             logging.info(f"Probmap shape: {prob_np.shape}")
             np.savez(output_directory / f"{img_name}.npz", probabilities=prob_np)
-            # save integer masks 
+            
+            # Save integer masks based on prediction
             if args.pred_label:
                 seg_out = np.argmax(prob_np, axis=0)
             else:
@@ -251,10 +282,13 @@ def main():
                 # seg_out[seg[3] == 1] = 4
                 # seg_out[seg[0] == 1] = 1
                 # seg_out[seg[2] == 1] = 3
+
+            # Save the segmentation result as a NIfTI file
+            nib.save(
+                nib.Nifti1Image(seg_out.astype(np.int8), affine),
+                output_directory / f"{img_name}.nii.gz"
+            )
             
-            nib.save(nib.Nifti1Image(seg_out.astype(np.int8), affine),
-                    output_directory / f"{img_name}.nii.gz")
-                
             logging.info(f"Seg shape: {seg_out.shape}")
                  
         logging.info(f"Finished inference! {int(time.time() - time0)} s")
