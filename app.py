@@ -171,7 +171,11 @@ with gr.Blocks() as demo:
         with gr.Column():
              gr.Button("", render=False)
         with gr.Column():
-            file_to_render = gr.Dropdown(['T2 Flair','native T1', 'post-contrast T1-weighted', 'T2 weighted'], label='choose the scan to overlay the segmentation on')
+            dropdown_modality = ['T2 Flair','native T1', 'post-contrast T1-weighted', 'T2 weighted']
+            file_to_render = gr.Dropdown(
+                dropdown_modality,
+                value =  dropdown_modality[0],
+                label='choose the scan to overlay the segmentation on')
         with gr.Column():
              gr.Button("", render=False)
 
