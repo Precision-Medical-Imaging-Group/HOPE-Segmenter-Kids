@@ -3,7 +3,7 @@ from pathlib import Path
 import time
 import torch
 import numpy as np
-from typing import Any, List, Tuple, Union, Optional
+from typing import Any, List, Tuple, Union, Optional, Dict
 from monai.inferers import sliding_window_inference
 from monai.networks.nets import SwinUNETR
 from monai.transforms import Activations
@@ -34,7 +34,6 @@ from monai.transforms import (
     RandShiftIntensityd,
     RandFlipd,
     RandAdjustContrastd,
-    RandSimulateLowResolutiond,
     ToTensord,
 )
 
