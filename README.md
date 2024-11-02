@@ -1,18 +1,23 @@
-# HOPE Segmenter
+# HOPE-Segmenter-Kids
 <a href="https://docs.hope4kids.io/HOPE-Platform/"><img src="https://img.shields.io/badge/HOPE%20Platform-green.svg"/></a>
 <a href="https://segmenter.hope4kids.io/"><img src="https://img.shields.io/badge/Web%20App-orange.svg"/></a>
 <a href="https://docs.hope4kids.io/HOPE-Segmenter-Kids/"><img src="https://img.shields.io/badge/Web%20Manual-yellow.svg"/></a>
 <a href="https://hub.docker.com/repository/docker/aparida12/brats-peds-2024"><img src="https://img.shields.io/badge/Docker-gray.svg"/></a>
-<a href="https://docs.hope4kids.io/HOPE-Segmenter-Kids/inference/index.html"><img src="https://img.shields.io/badge/Code%20Documentation-blue.svg"/></a>
+<a href="https://docs.hope4kids.io/HOPE-Segmenter-Kids/build/html/index.html"><img src="https://img.shields.io/badge/Code%20Documentation-blue.svg"/></a>
 <img alt="Example Screenshot" src="https://raw.githubusercontent.com/Precision-Medical-Imaging-Group/HOPE-Segmenter-Kids/refs/heads/main/docs/assets/img/Segmentation.png">
+
+
+This project develops the **Pediatric Brain Tumor Segmenter**, a free, open-source web-based application
+designed at [Children's National Hospital](https://www.childrensnational.org/) 
+for the segmentation and analysis of pediatric brain tumors in magnetic resonance imaging (MRI). 
+Developed in Python, this software aims to provide precise quantitative analysis 
+of pediatric brain MRI, to support clinical decision-making in diagnosis and prognosis.  
+The software and instruction are available at: [segmenter.hope4kids.io](https://segmenter.hope4kids.io/) and [instructions](https://docs.hope4kids.io/HOPE-Segmenter-Kids/).
+
 
 ## Docker & Singularity
 
-To run the algorithm using a docker or singularity container on your local data follow the steps provided at [docker hub](https://hub.docker.com/repository/docker/aparida12/brats-peds-2024).
-
-## Online Segmenter
-
-The online no-installation segmenter web app is available at [segmenter.hope4kids.io](https://segmenter.hope4kids.io/).
+To run the algorithm using a docker or singularity container on your local data, please follow the steps provided at [docker hub](https://hub.docker.com/repository/docker/aparida12/brats-peds-2024).
 
 ## Citations
 

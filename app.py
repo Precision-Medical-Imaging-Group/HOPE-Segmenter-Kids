@@ -373,7 +373,7 @@ with gr.Blocks() as demo:
         value=f"<p style='margin-top: 1rem; margin-bottom: 1rem'> <img src='{logo.logo}' alt='Childrens National Logo' style='display: inline-block'/></p>"
     )
     gr.HTML(
-        value=f"<justify><font size='4'> Welcome to the pediatric brain tumor segmenter. Please read the <a href='https://precision-medical-imaging-group.github.io/HOPE-Segmenter-Kids'>instructions</a> before using the application. </font></justify>"
+        value=f"<justify><font size='4'> Welcome to the pediatric brain tumor segmenter. Please read the <a href='https://docs.hope4kids.io/HOPE-Segmenter-Kids/'>instructions</a> before using the application. </font></justify>"
     )
 
     # File Uploads
