@@ -53,3 +53,5 @@ napoleon_include_special_with_doc = False
 napoleon_use_admonition_for_examples = False
 napoleon_use_admonition_for_notes = False
 napoleon_use_admonition_for_references = False
+
+html_baseurl = 'https://docs.hope4kids.io/HOPE-Segmenter-Kids/' 
