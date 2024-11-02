@@ -68,10 +68,11 @@ def get_cluster_artifacts(task: str) -> Dict[str, Any]:
     Returns:
         Dict[str, Any]: Dictionary containing cluster artifacts.
     """
+    script_dir = Path(__file__).resolve().parent.parent
     if task == 'BraTS-SSA':
-        pkl_path = 'kmeans-cluster-artifacts/SSA_cluster.pkl'
+        pkl_path = script_dir / "kmeans-cluster-artifacts" / "SSA_cluster.pkl"
     elif task == 'BraTS-PED':
-        pkl_path = 'kmeans-cluster-artifacts/PEDS_cluster.pkl'
+        pkl_path = script_dir / "kmeans-cluster-artifacts" / "PEDS_cluster.pkl"
     else:
         raise ValueError(f"Unsupported task: {task}")
     

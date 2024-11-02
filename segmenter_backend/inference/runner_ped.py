@@ -3,35 +3,38 @@ import os
 import shutil
 import tempfile
 from typing import Tuple, List, Dict, Any
-
-from nnunet.install_model import install_model_from_zip
-from ensembler.ped_weighted_ensemble import ped_ensemble
-from nnunet.runner import run_infer_nnunet
-from mednext.runner import run_infer_mednext
-from swinunetr.runner import run_infer_swinunetr
-from pp_cluster.infer import get_cluster, get_cluster_artifacts
-from radiomics.feature_extraction_v2 import extract_all, save_json, load_json
-from postproc.postprocess_cc import remove_small_component
-from postproc.postprocess_lblredef import label_redefinition
 import pandas as pd
+
+from .nnunet.install_model import install_model_from_zip
+from .ensembler.ped_weighted_ensemble import ped_ensemble
+from .nnunet.runner import run_infer_nnunet
+from .mednext.runner import run_infer_mednext
+from .swinunetr.runner import run_infer_swinunetr
+from .pp_cluster.infer import get_cluster, get_cluster_artifacts
+from .radiomics.feature_extraction_v2 import extract_all, save_json, load_json
+from .postproc.postprocess_cc import remove_small_component
+from .postproc.postprocess_lblredef import label_redefinition
 
 # Task identifier
 TASK: str = 'BraTS-PED'
 
 # Read the weights_cv.json
-json_path: Path = Path('./ensembler/weights_cv.json')
+# Determine the directory where this script is located
+script_dir = Path(__file__).resolve().parent
+    
+json_path: Path = script_dir / "ensembler" / "weights_cv.json"
 ENSEMBLE_WEIGHTS: Dict[str, float] = load_json(json_path)[TASK]
-NAME_MAPPER: Dict[str, str] = load_json(Path('./weights/name.json'))
+NAME_MAPPER: Dict[str, str] = load_json(script_dir / "weights" / "name.json")
 CLUSTER_ARTIFACT: Any = get_cluster_artifacts(TASK)
-THRESHOLD_FILE_CC: Path = Path('./postproc/cc_thresholds_cv.json')
-THRESHOLD_FILE_LBLDEF: Path = Path('./postproc/lblredef_thresholds_cv.json')
+THRESHOLD_FILE_CC: Path = script_dir / "postproc" / "cc_thresholds_cv.json"
+THRESHOLD_FILE_LBLDEF: Path = script_dir / "postproc" / "lblredef_thresholds_cv.json"
 
 # Configuration constants
 CONSTANTS: Dict[str, str] = {
-    'pyradiomics_paramfile': './radiomics/params.yaml',
-    'nnunet_model_path': './weights/BraTS2024_PEDs_nnunetv2_model.zip',
-    'mednext_model_path': './weights/BraTS2024_PEDs_MedNeXt_model.zip',
-    'swinunetr_model_path': './weights/swinunetr_peds_trunc.zip',
+    'pyradiomics_paramfile': str(script_dir / "radiomics" / "params.yaml"),
+    'nnunet_model_path': str(script_dir / "weights" / "BraTS2024_PEDs_nnunetv2_model.zip"),
+    'mednext_model_path': str(script_dir / "weights" / "BraTS2024_PEDs_MedNeXt_model.zip"),
+    'swinunetr_model_path': str(script_dir / "weights" / "swinunetr_peds_trunc.zip"),
 }
 
 
