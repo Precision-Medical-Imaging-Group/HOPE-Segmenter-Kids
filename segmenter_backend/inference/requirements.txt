@@ -4,6 +4,6 @@ scikit-learn==1.4.2
 pillow
 einops
 typer
-pyradiomics
+pyradiomics==3.0.1
 fire
 tensorboard
