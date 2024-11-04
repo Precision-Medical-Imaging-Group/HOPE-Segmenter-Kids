@@ -25,7 +25,7 @@ jobs:
       
       - name: Install dependencies ✅
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: pip install -r segmenter_backend/inference/requirements.txt
+        run: PIP_NO_BUILD_ISOLATION=0 pip install -r segmenter_backend/inference/requirements.txt
       
       - name: Build Doc ✅
         run: |
