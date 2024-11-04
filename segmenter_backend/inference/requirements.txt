@@ -11,3 +11,7 @@ flask
 boto3
 nibabel
 tqdm
+pandas
+json
+cc3d
+simpleITK
