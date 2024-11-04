@@ -22,7 +22,9 @@ jobs:
       
       - name: Install dependencies ✅
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: pip install -r segmenter_backend/inference/requirements.txt
+        run: | 
+          pip install numpy
+          pip install -r segmenter_backend/inference/requirements.txt
       
       - name: Build Doc ✅
         run: |
