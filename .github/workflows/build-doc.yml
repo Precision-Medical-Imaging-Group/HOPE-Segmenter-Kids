@@ -20,12 +20,12 @@ jobs:
         with:
           python-version: 3.11.4
           
-      - name: Install NumPy 📦
-        run: pip install numpy==1.26.3
       
       - name: Install dependencies ✅
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: PIP_NO_BUILD_ISOLATION=0 pip install -r segmenter_backend/inference/requirements.txt
+        run: | 
+          pip install monai
+          
       
       - name: Build Doc ✅
         run: |
