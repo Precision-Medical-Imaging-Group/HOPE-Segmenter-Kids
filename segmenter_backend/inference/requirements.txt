@@ -12,5 +12,5 @@ boto3
 nibabel
 tqdm
 pandas
-cc3d
+connected-components-3d
 SimpleITK
