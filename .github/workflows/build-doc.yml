@@ -1,0 +1,41 @@
+name: Build and publish doc
+on:
+  push:
+    branches:
+      - main
+      - test-doc
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+      
+      - name: Python 3.8.15 ✅
+        id: setup-python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10.12
+      
+      - name: Install dependencies ✅
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: pip install -r code/requirements.txt
+      
+      - name: Build Doc ✅
+        run: |
+          pip install pdoc
+          PYTHONPATH=segmenter_backend/inference/ pdoc -o docs ./segmenter_backend/inference/
+          rm -rf docs/index.html
+      
+      - name: Commit and Push Docs 📦
+        run: |
+          git config --local user.name "GitHub Action"
+          git config --local user.email "action@github.com"
+          git add docs/*
+          git commit -m "Update documentation" || echo "No changes to commit"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
