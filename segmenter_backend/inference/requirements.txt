@@ -10,3 +10,4 @@ tensorboard
 flask
 boto3
 nibabel
+tqdm
