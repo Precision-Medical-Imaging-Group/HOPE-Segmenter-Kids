@@ -19,13 +19,13 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.11.4
+          
+      - name: Install NumPy 📦
+        run: pip install numpy
       
       - name: Install dependencies ✅
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: | 
-          pip install numpy
-          echo "numpy installed"
-          pip install -r segmenter_backend/inference/requirements.txt
+        run: pip install -r segmenter_backend/inference/requirements.txt
       
       - name: Build Doc ✅
         run: |
