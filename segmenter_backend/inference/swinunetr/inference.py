@@ -1,3 +1,9 @@
+"""
+### SwinUNETR Inference
+
+Provides functionalities related to SwinUNETR segmentation inference.
+"""
+
 import logging
 from pathlib import Path
 import time

@@ -1,3 +1,10 @@
+"""
+### Post-processing 
+
+Provides functionalities related to computing connected components and postprocessing segmentation predictions by removing small connected components based on thresholds.
+"""
+
+
 from pathlib import Path
 import pandas as pd
 import pickle

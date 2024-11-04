@@ -1,3 +1,10 @@
+"""
+### Post-processing Label Redefinition
+
+Provides functionalities related to postprocessing segmentation predictions by redefining labels based on threshold criteria.
+"""
+
+
 import pandas as pd
 import glob
 import os

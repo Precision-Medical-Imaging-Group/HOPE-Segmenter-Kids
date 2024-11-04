@@ -1,3 +1,10 @@
+"""
+### Radimoics Feature Extraction Module
+
+Provides functionalities related to radioimcs feature extraction from MRI sequences.
+"""
+
+
 from pathlib import Path
 from typing import Any, List, Dict, Tuple, Union, Optional
 import os

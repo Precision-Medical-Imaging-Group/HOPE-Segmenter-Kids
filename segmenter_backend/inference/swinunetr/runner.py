@@ -1,3 +1,10 @@
+"""
+### SwinUNETR Inference Runner
+
+Provides functionalities related to running the SwinUNETR inference on the input data.
+"""
+
+
 import subprocess
 from pathlib import Path
 import torch

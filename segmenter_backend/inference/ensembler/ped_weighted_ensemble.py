@@ -1,3 +1,10 @@
+"""
+### Weighted Ensemble for Pediatric Brain Tumor Segmentation
+
+Provides functionalities related to running a weighted ensemble of predictions from SwinUNETR, nnUNet, and MedNeXt models.
+"""
+
+
 from pathlib import Path
 import numpy as np
 import nibabel as nib

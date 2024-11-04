@@ -1,3 +1,10 @@
+"""
+### Pediatric Brain Tumor Segmentation Pipeline
+
+Provides functionalities related to running the pipeline for pediatric brain tumor segmentation in MRI.
+"""
+
+
 from pathlib import Path
 import os
 import shutil

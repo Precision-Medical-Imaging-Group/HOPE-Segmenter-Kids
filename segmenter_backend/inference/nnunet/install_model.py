@@ -1,3 +1,10 @@
+"""
+### Import Model from ZIP File
+
+Provides functionalities related to extracting a pretrained nnU-Net model from a zipped file.
+"""
+
+
 import zipfile
 import os
 import argparse

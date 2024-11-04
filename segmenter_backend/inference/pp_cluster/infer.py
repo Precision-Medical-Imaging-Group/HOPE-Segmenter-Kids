@@ -1,3 +1,9 @@
+"""
+### Post-processing Clustering
+
+Provides functionalities related to post-processing clustering using the radiomics features.
+"""
+
 from pathlib import Path
 import pandas as pd
 import pickle

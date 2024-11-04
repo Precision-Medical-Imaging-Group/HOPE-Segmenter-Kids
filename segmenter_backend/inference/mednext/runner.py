@@ -1,3 +1,10 @@
+"""
+### MedNeXt Inference Runner
+
+Provides functionalities related to running the MedNeXt inference on the input data.
+"""
+
+
 import subprocess
 from tqdm import tqdm
 import os
