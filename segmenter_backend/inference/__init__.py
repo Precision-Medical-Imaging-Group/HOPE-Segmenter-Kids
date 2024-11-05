@@ -10,7 +10,7 @@ Developed in Python, this software aims to provide precise quantitative analysis
 of pediatric brain MRI, to support clinical decision-making in diagnosis and prognosis.  
 The software and instruction are available at [segmenter.hope4kids.io](https://segmenter.hope4kids.io/) and [instructions](https://docs.hope4kids.io/HOPE-Segmenter-Kids/).
 
-<img alt="Example Screenshot" src="https://raw.githubusercontent.com/Precision-Medical-Imaging-Group/HOPE-Segmenter-Kids/refs/heads/main/docs/assets/img/Segmentation.png">
+<img alt="Example Screenshot" src="https://raw.githubusercontent.com/Precision-Medical-Imaging-Group/HOPE-Segmenter-Kids/refs/heads/main/docs/assets/img/Segmentation.png" width="500">
 
 ### Citations
 
