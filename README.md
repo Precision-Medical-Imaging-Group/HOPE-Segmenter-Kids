@@ -21,7 +21,7 @@ The software and instruction are available at [segmenter.hope4kids.io](https://s
 ## Code Documentation
 <a href="https://docs.hope4kids.io/HOPE-Segmenter-Kids/inference.html"><img src="https://img.shields.io/badge/Code%20Documentation-blue.svg"/></a>
 
-The API documentation for the inference code is provided at [Code Documentation](https://docs.hope4kids.io/HOPE-Segmenter-Kids/inference.html).
+The API documentation for the inference code, segmenter backend for HOPE-Segmenter-Kids, is available at [Code Documentation](https://docs.hope4kids.io/HOPE-Segmenter-Kids/inference.html).
 
 ## Docker & Singularity
 <a href="https://hub.docker.com/repository/docker/aparida12/brats-peds-2024"><img src="https://img.shields.io/badge/Docker-gray.svg"/></a>
