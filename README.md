@@ -1,5 +1,5 @@
 # HOPE-Segmenter-Kids
-Click the buttons below to quickly navigate to related pages:
+Click the buttons below to navigate the related pages quickly:
  
 <a href="https://docs.hope4kids.io/HOPE-Platform/"><img src="https://img.shields.io/badge/HOPE%20Platform-green.svg?style=plastic"/></a>
 <a href="https://segmenter.hope4kids.io/"><img src="https://img.shields.io/badge/Web%20App-orange.svg?style=plastic"/></a>
@@ -44,3 +44,17 @@ doi: [10.1109/ISBI56570.2024.10635469](https://ieeexplore.ieee.org/document/1063
 ## Disclaimer
 
 This software is provided without any warranties or liabilities and is intended for research purposes only. It has not been reviewed or approved for clinical use by the Food and Drug Administration (FDA) or any other federal or state agency. 
+
+## License
+
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
+
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
+
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
+
