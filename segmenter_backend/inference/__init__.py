@@ -29,4 +29,8 @@ doi: [10.1109/ISBI56570.2024.10635469](https://ieeexplore.ieee.org/document/1063
 
 This software is provided without any warranties or liabilities and is intended for research purposes only. It has not been reviewed or approved for clinical use by the Food and Drug Administration (FDA) or any other federal or state agency. 
 
+### Copyright Notification
+
+Copyright 2024 Children's National Medical Center and Universidad Polit&eacute;cnica de Madrid.
+
 """
