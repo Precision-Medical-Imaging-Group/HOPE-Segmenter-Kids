@@ -58,3 +58,6 @@ This work is licensed under a
 [cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 
+## Copyright Notification 
+
+Copyright 2024 Children's National Medical Center and Universidad Polit&eacute;cnica de Madrid.
