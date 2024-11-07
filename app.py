@@ -9,6 +9,7 @@ import gradio as gr
 import os
 from app_assets import logo
 from typing import Tuple, List, Dict, Any
+import shutil
 
 # Configure the logger for the module
 logger = logging.getLogger(__file__)
@@ -61,31 +62,31 @@ def run_inference(
         "t1n": image_t1n,
         "t2w": image_t2w,
     }
-
+    # remove old cache files 
     # Define and create the input directory
+    global mydict
+    mydict = {}
+
     input_path = Path("/tmp/peds-app") / DUMMY_DIR
+    if input_path.exists():
+        shutil.rmtree(input_path)
     os.makedirs(input_path, exist_ok=True)
 
     # Define and create the output directory
     output_folder = Path("./segmenter/mlcube/outs")
+    for file in output_folder.glob("*.nii.gz"):
+        os.remove(file)
     os.makedirs(output_folder, exist_ok=True)
-
+    
     # Define paths for the output segmentation
     output_path = output_folder / f"seg_{image_t1c.name}"
     fake_output_path = output_folder / f"{DUMMY_DIR}.nii.gz"
 
-    # Copy each image to the input directory with the dummy filenames
+    # MOVE each image to the input directory with the dummy filenames
     for key, file in image_paths.items():
-        subprocess.run(
-            f"cp {file} {input_path}/{DUMMY_FILE_NAMES[key]}",
-            shell=True,
-            check=True,
-        )
-
-    # Remove the original uploaded files to free up space
-    for file in image_paths.values():
-        subprocess.run(f"rm {file}", shell=True, check=True)
-
+        dummy_file_path = input_path / DUMMY_FILE_NAMES[key]
+        shutil.copyfile(file, dummy_file_path)
+        
     # Construct the Docker command for inference
     mlcube_cmd = (
         f"docker run --shm-size=2gb --gpus=all "
@@ -98,11 +99,7 @@ def run_inference(
     subprocess.run(mlcube_cmd, shell=True, check=True)
 
     # Move the fake output to the actual output path
-    subprocess.run(
-        f"mv -f {fake_output_path} {output_path}",
-        shell=True,
-        check=True,
-    )
+    os.rename(fake_output_path, output_path)
 
     return str(input_path), str(output_path)
 
@@ -271,7 +268,7 @@ def render(file_to_render: str, x: int, view: str) -> Tuple[PIL.Image.Image, Lis
         ValueError: If the specified file type is not found.
     """
     suffix = {
-        "T2 Flair": "t2f",
+        "T2 FLAIR": "t2f",
         "native T1": "t1n",
         "post-contrast T1-weighted": "t1c",
         "T2 weighted": "t2w",
@@ -412,7 +409,7 @@ with gr.Blocks() as demo:
         with gr.Column():
             gr.Button("", visible=False)  # Spacer
         with gr.Column():
-            dropdown_modality = ["T2 Flair","native T1", "post-contrast T1-weighted", "T2 weighted"]
+            dropdown_modality = ["T2 FLAIR","native T1", "post-contrast T1-weighted", "T2 weighted"]
             file_to_render = gr.Dropdown(
                 dropdown_modality,
                 value =  dropdown_modality[0],
@@ -449,7 +446,7 @@ with gr.Blocks() as demo:
 
     # Examples Setup
     example_dir = "/home/pmilab/Abhijeet/examples/"
-    generate_examples = glob.glob(os.path.join(example_dir, "*"))
+    generate_examples = sorted(glob.glob(os.path.join(example_dir, "*")))
     order_list = ["-t1c.nii.gz", "-t2f.nii.gz", "-t1n.nii.gz", "-t2w.nii.gz"]
     example_list = [
         [os.path.join(path, f"{Path(path).name}{ending}") for ending in order_list]
