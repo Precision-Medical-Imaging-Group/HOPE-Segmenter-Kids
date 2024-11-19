@@ -169,9 +169,10 @@ def render_slice(
     else:
         raise ValueError(f"Invalid view type: {view}")
 
-    # Flip the slice images upside down for correct orientation
-    slice_img = np.flipud(slice_img)
-    slice_mask = np.flipud(slice_mask)
+    # Flip the slice images upside down for correct orientation for non axial slices
+    if view != "axial":
+        slice_img = np.flipud(slice_img)
+        slice_mask = np.flipud(slice_mask)
     return slice_img, slice_mask
 
 
@@ -446,7 +447,7 @@ with gr.Blocks() as demo:
 
     # Examples Setup
     example_dir = "/home/pmilab/Abhijeet/examples/"
-    generate_examples = sorted(glob.glob(os.path.join(example_dir, "*")))
+    generate_examples =  [os.path.join(example_dir, names) for names in ['BraTS-PED-00019-000', 'BraTS-PED-00051-000', 'BraTS-PED-00300-000', 'BraTS-PED-00001-000', 'BraTS-PED-00018-000', 'BraTS-PED-00021-000', 'BraTS-PED-00351-000' ]]#sorted(glob.glob(os.path.join(example_dir, "*")))
     order_list = ["-t1c.nii.gz", "-t2f.nii.gz", "-t1n.nii.gz", "-t2w.nii.gz"]
     example_list = [
         [os.path.join(path, f"{Path(path).name}{ending}") for ending in order_list]
