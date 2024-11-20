@@ -7,6 +7,8 @@ Click the buttons below to navigate the related pages quickly:
 <a href="https://hub.docker.com/repository/docker/aparida12/brats-peds-2024"><img src="https://img.shields.io/badge/Docker-gray.svg?style=plastic"/></a>
 <a href="https://docs.hope4kids.io/HOPE-Segmenter-Kids/inference.html"><img src="https://img.shields.io/badge/Code%20Documentation-blue.svg?style=plastic"/></a>
 
+[![Better Stack Badge](https://uptime.betterstack.com/status-badges/v2/monitor/1nvoc.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
+
 ## About
 
 This project develops the **Pediatric Brain Tumor Segmenter**, a free, open-source web-based application
