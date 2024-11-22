@@ -378,16 +378,16 @@ with gr.Blocks() as demo:
     with gr.Row():
         image_t1c = gr.File(
             label="Upload T1 Contrast Enhanced Here:",
-            file_types=["nii.gz"],
+            file_types=[".gz"],
         )
         image_t2f = gr.File(
-            label="Upload T2 FLAIR Here:", file_types=["nii.gz"]
+            label="Upload T2 FLAIR Here:", file_types=[".gz"]
         )
         image_t1n = gr.File(
-            label="Upload T1 Pre-Contrast Here:", file_types=["nii.gz"]
+            label="Upload T1 Pre-Contrast Here:", file_types=[".gz"]
         )
         image_t2w = gr.File(
-            label="Upload T2 Weighted Here:", file_types=["nii.gz"]
+            label="Upload T2 Weighted Here:", file_types=[".gz"]
         )
 
     # Segmentation Button
@@ -446,7 +446,7 @@ with gr.Blocks() as demo:
         mask_file = gr.File(label="Download Segmentation File", height="vw")
 
     # Examples Setup
-    example_dir = "/home/pmilab/Abhijeet/examples/"
+    example_dir = "./examples"
     generate_examples =  [os.path.join(example_dir, names) for names in ['BraTS-PED-00019-000', 'BraTS-PED-00051-000', 'BraTS-PED-00300-000', 'BraTS-PED-00001-000', 'BraTS-PED-00018-000', 'BraTS-PED-00021-000', 'BraTS-PED-00351-000' ]]#sorted(glob.glob(os.path.join(example_dir, "*")))
     order_list = ["-t1c.nii.gz", "-t2f.nii.gz", "-t1n.nii.gz", "-t2w.nii.gz"]
     example_list = [
