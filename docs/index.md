@@ -55,6 +55,12 @@ at Children’s National Hospital in Washington, DC, USA.
 
 **Copyright Notification**  Copyright 2024 Children's National Medical Center and Universidad Polit&eacute;cnica de Madrid.
 
+# Contributors
+
+This web app was made possible due to the efforts made by
+
+[Abhijeet Parida](https://www.linkedin.com/in/a-parida/), [Zhifan Jiang](https://www.linkedin.com/in/zhifan-jiang-19917531/), [Daniel Capell&aacute;n-Mart&iacute;n](https://www.linkedin.com/in/daniel-capellan-martin/), [Maria J. Ledesma-Carbayo](https://www.linkedin.com/in/maria-j-ledesma-carbayo-440aa8275/), [Syed Muhammad Anwar](https://www.linkedin.com/in/syed-anwar-5473b81a/), [Marius George Linguraru](https://www.linkedin.com/in/mglinguraru/)
+
 # Citations
 
 If you use and/or refer to this software in your research, please cite the following papers: 
@@ -94,7 +100,7 @@ All uploaded and generated data are automatically deleted once the webpage is cl
 
 * New features are continually being developed. To stay informed about updates, 
 report issues or provide feedback, please fill out the 
-**online form** [here](https://docs.google.com/forms/d/e/1FAIpQLSfkH4l3Dcd1qNnH_dLgbiUAQWGKeSAnbBr3ndMwD5yhoZ7Pfw/viewform) or contact [support@hope4kids.io](mailto:support@hope4kids.io) .   
+**online form** [here](https://docs.google.com/forms/d/e/1FAIpQLSfkH4l3Dcd1qNnH_dLgbiUAQWGKeSAnbBr3ndMwD5yhoZ7Pfw/viewform) or contact **Abhijeet Parida** [support@hope4kids.io](mailto:support@hope4kids.io) .   
 
 * For more information, collaboration, or to receive the model in a Docker container 
 for testing on large datasets locally, please contact 
