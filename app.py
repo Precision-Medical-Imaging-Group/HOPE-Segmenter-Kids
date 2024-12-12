@@ -7,9 +7,28 @@ import SimpleITK as sitk
 import PIL
 import gradio as gr
 import os
-from app_assets import logo
 from typing import Tuple, List, Dict, Any
 import shutil
+import base64
+
+def image_to_base64(image_path:str)-> str:
+    """Convert a image to the base64 encoding for display of banner.
+
+    Args:
+        image_path (str): path to image.
+
+    Returns:
+        str: base64 encoded image
+    """
+
+    with open(image_path, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+        
+    return 'data:image/jpeg;base64,'+encoded_string
+
+# Example usage
+image_path = "./app_assets/app_header.png"
+logo = image_to_base64(image_path)
 
 # Configure the logger for the module
 logger = logging.getLogger(__file__)
@@ -368,10 +387,10 @@ with gr.Blocks() as demo:
         value=f"<center><font size='6'><bold> Children's National Pediatric Brain Tumor Segmenter</bold></font></center>"
     )
     gr.HTML(
-        value=f"<p style='margin-top: 1rem; margin-bottom: 1rem'> <img src='{logo.logo}' alt='Childrens National Logo' style='display: inline-block'/></p>"
+        value=f"<p style='margin-top: 1rem; margin-bottom: 1rem'> <img src='{logo}' alt='Childrens National Logo' style='display: inline-block'/></p>"
     )
     gr.HTML(
-        value=f"<justify><font size='4'> Welcome to the pediatric brain tumor segmenter. Please read the <a href='https://docs.hope4kids.io/HOPE-Segmenter-Kids/'>instructions</a> before using the application. </font></justify>"
+        value=f"<justify><font size='4'> Welcome to the pediatric brain tumor segmenter. Please read the <a href='https://docs.hope4kids.io/HOPE-Segmenter-Kids/'>instructions</a> before using the application. Partial support for this work is provided by the NIH- National Cancer Institute grant UG3-UH3 CA236536. </font></justify>"
     )
 
     # File Uploads
@@ -508,4 +527,4 @@ with gr.Blocks() as demo:
     )
 
 if __name__ == "__main__":
-    demo.queue().launch(server_name="0.0.0.0", server_port=7860)
+    demo.queue().launch(server_name="0.0.0.0")#, server_port=7860)
