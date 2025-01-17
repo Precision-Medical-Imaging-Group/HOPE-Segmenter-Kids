@@ -101,16 +101,16 @@
 </span><span id="L-5"><a href="#L-5"><span class="linenos">  5</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a>
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a>
-</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">import</span> <span class="nn">glob</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">import</span> <span class="nn">os</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">import</span> <span class="nn">cc3d</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">import</span> <span class="nn">json</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="kn">import</span> <span class="nn">argparse</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Dict</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">nibabel</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nib</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">cc3d</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Dict</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a>
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a>
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="n">LABEL_MAPPING_FACTORY</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
@@ -136,7 +136,7 @@
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="p">}</span>
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>
 </span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="k">def</span> <span class="nf">parse_args</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">:</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="k">def</span><span class="w"> </span><span class="nf">parse_args</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">:</span>
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">    Parses command-line arguments for the BraTS2024 CC Postprocessing script.</span>
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>
@@ -158,7 +158,7 @@
 </span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="k">return</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="k">def</span> <span class="nf">get_connected_components</span><span class="p">(</span><span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_connected_components</span><span class="p">(</span><span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">    Identifies connected components for a specific label in the segmentation.</span>
 </span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>
@@ -175,7 +175,7 @@
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="k">return</span> <span class="n">labels</span><span class="p">,</span> <span class="n">n</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>
 </span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="k">def</span> <span class="nf">postprocess_cc</span><span class="p">(</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="k">def</span><span class="w"> </span><span class="nf">postprocess_cc</span><span class="p">(</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">thresholds_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">label_mapping</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
@@ -215,7 +215,7 @@
 </span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">return</span> <span class="n">pred</span>
 </span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>
 </span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="k">def</span> <span class="nf">postprocess_batch</span><span class="p">(</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="k">def</span><span class="w"> </span><span class="nf">postprocess_batch</span><span class="p">(</span>
 </span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">input_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
 </span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">output_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="n">thresholds_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
@@ -252,7 +252,7 @@
 </span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="n">nib</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">nib</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">nib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">affine</span><span class="p">),</span> <span class="n">save_path</span><span class="p">)</span>
 </span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>
 </span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="k">def</span> <span class="nf">get_thresholds_task</span><span class="p">(</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_thresholds_task</span><span class="p">(</span>
 </span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">challenge_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">input_file</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
@@ -278,7 +278,7 @@
 </span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="k">return</span> <span class="n">thresholds</span><span class="p">[</span><span class="n">challenge_name</span><span class="p">]</span>
 </span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>
 </span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="k">def</span> <span class="nf">get_thresholds_cluster</span><span class="p">(</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_thresholds_cluster</span><span class="p">(</span>
 </span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">thresholds</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
 </span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="n">cluster_name</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
@@ -300,7 +300,7 @@
 </span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="k">return</span> <span class="n">thresholds</span><span class="p">[</span><span class="n">cluster_name</span><span class="p">]</span>
 </span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>
 </span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="k">def</span> <span class="nf">get_files</span><span class="p">(</span><span class="n">input_folder_pred</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_files</span><span class="p">(</span><span class="n">input_folder_pred</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    Retrieves all prediction file paths from the input directory.</span>
 </span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>
@@ -315,7 +315,7 @@
 </span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="k">return</span> <span class="n">files_pred</span>
 </span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>
 </span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="k">def</span> <span class="nf">get_cluster_files</span><span class="p">(</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_cluster_files</span><span class="p">(</span>
 </span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">cluster_assignment</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
 </span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">cluster_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
 </span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">files_pred</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
@@ -344,7 +344,7 @@
 </span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="k">return</span> <span class="n">cluster_files_pred</span>
 </span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>
 </span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="k">def</span> <span class="nf">read_cluster_assignment</span><span class="p">(</span><span class="n">clusters_json</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="k">def</span><span class="w"> </span><span class="nf">read_cluster_assignment</span><span class="p">(</span><span class="n">clusters_json</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
 </span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">    Reads cluster assignments from a JSON file.</span>
 </span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>
@@ -370,7 +370,7 @@
 </span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="k">return</span> <span class="n">cluster_assignment</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">cluster_array</span><span class="p">)</span>
 </span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>
 </span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="k">def</span> <span class="nf">read_cluster_assignment_df</span><span class="p">(</span><span class="n">clusterdf</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="k">def</span><span class="w"> </span><span class="nf">read_cluster_assignment_df</span><span class="p">(</span><span class="n">clusterdf</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
 </span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">    Reads cluster assignments from a pandas DataFrame.</span>
 </span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>
@@ -396,7 +396,7 @@
 </span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="k">return</span> <span class="n">cluster_assignment</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">cluster_array</span><span class="p">)</span>
 </span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>
 </span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a><span class="k">def</span> <span class="nf">remove_small_component</span><span class="p">(</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a><span class="k">def</span><span class="w"> </span><span class="nf">remove_small_component</span><span class="p">(</span>
 </span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>    <span class="n">challenge_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="n">thresholds_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="n">input_folder_pred</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -447,7 +447,7 @@
 </span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="k">return</span> <span class="n">output_folder_pp_cc</span>
 </span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>
 </span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="k">def</span> <span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="sd">    Main function to execute label redefinition and connected component postprocessing.</span>
 </span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>
@@ -522,7 +522,7 @@
 
     </div>
     <a class="headerlink" href="#parse_args"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="parse_args-44"><a href="#parse_args-44"><span class="linenos">44</span></a><span class="k">def</span> <span class="nf">parse_args</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="parse_args-44"><a href="#parse_args-44"><span class="linenos">44</span></a><span class="k">def</span><span class="w"> </span><span class="nf">parse_args</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">:</span>
 </span><span id="parse_args-45"><a href="#parse_args-45"><span class="linenos">45</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="parse_args-46"><a href="#parse_args-46"><span class="linenos">46</span></a><span class="sd">    Parses command-line arguments for the BraTS2024 CC Postprocessing script.</span>
 </span><span id="parse_args-47"><a href="#parse_args-47"><span class="linenos">47</span></a>
@@ -564,7 +564,7 @@
 
     </div>
     <a class="headerlink" href="#get_connected_components"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="get_connected_components-66"><a href="#get_connected_components-66"><span class="linenos">66</span></a><span class="k">def</span> <span class="nf">get_connected_components</span><span class="p">(</span><span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_connected_components-66"><a href="#get_connected_components-66"><span class="linenos">66</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_connected_components</span><span class="p">(</span><span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
 </span><span id="get_connected_components-67"><a href="#get_connected_components-67"><span class="linenos">67</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="get_connected_components-68"><a href="#get_connected_components-68"><span class="linenos">68</span></a><span class="sd">    Identifies connected components for a specific label in the segmentation.</span>
 </span><span id="get_connected_components-69"><a href="#get_connected_components-69"><span class="linenos">69</span></a>
@@ -607,7 +607,7 @@
 
     </div>
     <a class="headerlink" href="#postprocess_cc"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="postprocess_cc-83"><a href="#postprocess_cc-83"><span class="linenos"> 83</span></a><span class="k">def</span> <span class="nf">postprocess_cc</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="postprocess_cc-83"><a href="#postprocess_cc-83"><span class="linenos"> 83</span></a><span class="k">def</span><span class="w"> </span><span class="nf">postprocess_cc</span><span class="p">(</span>
 </span><span id="postprocess_cc-84"><a href="#postprocess_cc-84"><span class="linenos"> 84</span></a>    <span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
 </span><span id="postprocess_cc-85"><a href="#postprocess_cc-85"><span class="linenos"> 85</span></a>    <span class="n">thresholds_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
 </span><span id="postprocess_cc-86"><a href="#postprocess_cc-86"><span class="linenos"> 86</span></a>    <span class="n">label_mapping</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
@@ -673,7 +673,7 @@
 
     </div>
     <a class="headerlink" href="#postprocess_batch"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="postprocess_batch-123"><a href="#postprocess_batch-123"><span class="linenos">123</span></a><span class="k">def</span> <span class="nf">postprocess_batch</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="postprocess_batch-123"><a href="#postprocess_batch-123"><span class="linenos">123</span></a><span class="k">def</span><span class="w"> </span><span class="nf">postprocess_batch</span><span class="p">(</span>
 </span><span id="postprocess_batch-124"><a href="#postprocess_batch-124"><span class="linenos">124</span></a>    <span class="n">input_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
 </span><span id="postprocess_batch-125"><a href="#postprocess_batch-125"><span class="linenos">125</span></a>    <span class="n">output_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="postprocess_batch-126"><a href="#postprocess_batch-126"><span class="linenos">126</span></a>    <span class="n">thresholds_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
@@ -734,7 +734,7 @@
 
     </div>
     <a class="headerlink" href="#get_thresholds_task"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="get_thresholds_task-160"><a href="#get_thresholds_task-160"><span class="linenos">160</span></a><span class="k">def</span> <span class="nf">get_thresholds_task</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_thresholds_task-160"><a href="#get_thresholds_task-160"><span class="linenos">160</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_thresholds_task</span><span class="p">(</span>
 </span><span id="get_thresholds_task-161"><a href="#get_thresholds_task-161"><span class="linenos">161</span></a>    <span class="n">challenge_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="get_thresholds_task-162"><a href="#get_thresholds_task-162"><span class="linenos">162</span></a>    <span class="n">input_file</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="get_thresholds_task-163"><a href="#get_thresholds_task-163"><span class="linenos">163</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
@@ -787,7 +787,7 @@
 
     </div>
     <a class="headerlink" href="#get_thresholds_cluster"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="get_thresholds_cluster-186"><a href="#get_thresholds_cluster-186"><span class="linenos">186</span></a><span class="k">def</span> <span class="nf">get_thresholds_cluster</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_thresholds_cluster-186"><a href="#get_thresholds_cluster-186"><span class="linenos">186</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_thresholds_cluster</span><span class="p">(</span>
 </span><span id="get_thresholds_cluster-187"><a href="#get_thresholds_cluster-187"><span class="linenos">187</span></a>    <span class="n">thresholds</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
 </span><span id="get_thresholds_cluster-188"><a href="#get_thresholds_cluster-188"><span class="linenos">188</span></a>    <span class="n">cluster_name</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="get_thresholds_cluster-189"><a href="#get_thresholds_cluster-189"><span class="linenos">189</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
@@ -836,7 +836,7 @@
 
     </div>
     <a class="headerlink" href="#get_files"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="get_files-208"><a href="#get_files-208"><span class="linenos">208</span></a><span class="k">def</span> <span class="nf">get_files</span><span class="p">(</span><span class="n">input_folder_pred</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_files-208"><a href="#get_files-208"><span class="linenos">208</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_files</span><span class="p">(</span><span class="n">input_folder_pred</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="get_files-209"><a href="#get_files-209"><span class="linenos">209</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="get_files-210"><a href="#get_files-210"><span class="linenos">210</span></a><span class="sd">    Retrieves all prediction file paths from the input directory.</span>
 </span><span id="get_files-211"><a href="#get_files-211"><span class="linenos">211</span></a>
@@ -874,7 +874,7 @@
 
     </div>
     <a class="headerlink" href="#get_cluster_files"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="get_cluster_files-223"><a href="#get_cluster_files-223"><span class="linenos">223</span></a><span class="k">def</span> <span class="nf">get_cluster_files</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_cluster_files-223"><a href="#get_cluster_files-223"><span class="linenos">223</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_cluster_files</span><span class="p">(</span>
 </span><span id="get_cluster_files-224"><a href="#get_cluster_files-224"><span class="linenos">224</span></a>    <span class="n">cluster_assignment</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
 </span><span id="get_cluster_files-225"><a href="#get_cluster_files-225"><span class="linenos">225</span></a>    <span class="n">cluster_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
 </span><span id="get_cluster_files-226"><a href="#get_cluster_files-226"><span class="linenos">226</span></a>    <span class="n">files_pred</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
@@ -929,7 +929,7 @@
 
     </div>
     <a class="headerlink" href="#read_cluster_assignment"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="read_cluster_assignment-252"><a href="#read_cluster_assignment-252"><span class="linenos">252</span></a><span class="k">def</span> <span class="nf">read_cluster_assignment</span><span class="p">(</span><span class="n">clusters_json</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="read_cluster_assignment-252"><a href="#read_cluster_assignment-252"><span class="linenos">252</span></a><span class="k">def</span><span class="w"> </span><span class="nf">read_cluster_assignment</span><span class="p">(</span><span class="n">clusters_json</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
 </span><span id="read_cluster_assignment-253"><a href="#read_cluster_assignment-253"><span class="linenos">253</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="read_cluster_assignment-254"><a href="#read_cluster_assignment-254"><span class="linenos">254</span></a><span class="sd">    Reads cluster assignments from a JSON file.</span>
 </span><span id="read_cluster_assignment-255"><a href="#read_cluster_assignment-255"><span class="linenos">255</span></a>
@@ -980,7 +980,7 @@
 
     </div>
     <a class="headerlink" href="#read_cluster_assignment_df"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="read_cluster_assignment_df-278"><a href="#read_cluster_assignment_df-278"><span class="linenos">278</span></a><span class="k">def</span> <span class="nf">read_cluster_assignment_df</span><span class="p">(</span><span class="n">clusterdf</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="read_cluster_assignment_df-278"><a href="#read_cluster_assignment_df-278"><span class="linenos">278</span></a><span class="k">def</span><span class="w"> </span><span class="nf">read_cluster_assignment_df</span><span class="p">(</span><span class="n">clusterdf</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
 </span><span id="read_cluster_assignment_df-279"><a href="#read_cluster_assignment_df-279"><span class="linenos">279</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="read_cluster_assignment_df-280"><a href="#read_cluster_assignment_df-280"><span class="linenos">280</span></a><span class="sd">    Reads cluster assignments from a pandas DataFrame.</span>
 </span><span id="read_cluster_assignment_df-281"><a href="#read_cluster_assignment_df-281"><span class="linenos">281</span></a>
@@ -1031,7 +1031,7 @@
 
     </div>
     <a class="headerlink" href="#remove_small_component"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="remove_small_component-304"><a href="#remove_small_component-304"><span class="linenos">304</span></a><span class="k">def</span> <span class="nf">remove_small_component</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="remove_small_component-304"><a href="#remove_small_component-304"><span class="linenos">304</span></a><span class="k">def</span><span class="w"> </span><span class="nf">remove_small_component</span><span class="p">(</span>
 </span><span id="remove_small_component-305"><a href="#remove_small_component-305"><span class="linenos">305</span></a>    <span class="n">challenge_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="remove_small_component-306"><a href="#remove_small_component-306"><span class="linenos">306</span></a>    <span class="n">thresholds_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="remove_small_component-307"><a href="#remove_small_component-307"><span class="linenos">307</span></a>    <span class="n">input_folder_pred</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -1109,7 +1109,7 @@
 
     </div>
     <a class="headerlink" href="#main"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="main-355"><a href="#main-355"><span class="linenos">355</span></a><span class="k">def</span> <span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="main-355"><a href="#main-355"><span class="linenos">355</span></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="main-356"><a href="#main-356"><span class="linenos">356</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="main-357"><a href="#main-357"><span class="linenos">357</span></a><span class="sd">    Main function to execute label redefinition and connected component postprocessing.</span>
 </span><span id="main-358"><a href="#main-358"><span class="linenos">358</span></a>

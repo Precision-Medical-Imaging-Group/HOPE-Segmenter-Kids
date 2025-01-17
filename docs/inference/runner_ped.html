@@ -110,22 +110,22 @@
 </span><span id="L-5"><a href="#L-5"><span class="linenos">  5</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a>
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a>
-</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">import</span> <span class="nn">os</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">import</span> <span class="nn">shutil</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span> <span class="nn">tempfile</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a>
-</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="kn">from</span> <span class="nn">.nnunet.install_model</span> <span class="kn">import</span> <span class="n">install_model_from_zip</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="kn">from</span> <span class="nn">.ensembler.ped_weighted_ensemble</span> <span class="kn">import</span> <span class="n">ped_ensemble</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">from</span> <span class="nn">.nnunet.runner</span> <span class="kn">import</span> <span class="n">run_infer_nnunet</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="kn">from</span> <span class="nn">.mednext.runner</span> <span class="kn">import</span> <span class="n">run_infer_mednext</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="kn">from</span> <span class="nn">.swinunetr.runner</span> <span class="kn">import</span> <span class="n">run_infer_swinunetr</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="kn">from</span> <span class="nn">.pp_cluster.infer</span> <span class="kn">import</span> <span class="n">get_cluster</span><span class="p">,</span> <span class="n">get_cluster_artifacts</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="kn">from</span> <span class="nn">.radiomics.feature_extraction_v2</span> <span class="kn">import</span> <span class="n">extract_all</span><span class="p">,</span> <span class="n">save_json</span><span class="p">,</span> <span class="n">load_json</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="kn">from</span> <span class="nn">.postproc.postprocess_cc</span> <span class="kn">import</span> <span class="n">remove_small_component</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="kn">from</span> <span class="nn">.postproc.postprocess_lblredef</span> <span class="kn">import</span> <span class="n">label_redefinition</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.nnunet.install_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">install_model_from_zip</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.ensembler.ped_weighted_ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">ped_ensemble</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.nnunet.runner</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_infer_nnunet</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.mednext.runner</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_infer_mednext</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.swinunetr.runner</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_infer_swinunetr</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.pp_cluster.infer</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_cluster</span><span class="p">,</span> <span class="n">get_cluster_artifacts</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.radiomics.feature_extraction_v2</span><span class="w"> </span><span class="kn">import</span> <span class="n">extract_all</span><span class="p">,</span> <span class="n">save_json</span><span class="p">,</span> <span class="n">load_json</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.postproc.postprocess_cc</span><span class="w"> </span><span class="kn">import</span> <span class="n">remove_small_component</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.postproc.postprocess_lblredef</span><span class="w"> </span><span class="kn">import</span> <span class="n">label_redefinition</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a>
 </span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a><span class="c1"># Task identifier</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="n">TASK</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;BraTS-PED&#39;</span>
@@ -150,7 +150,7 @@
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="p">}</span>
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="k">def</span> <span class="nf">maybe_make_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="k">def</span><span class="w"> </span><span class="nf">maybe_make_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a directory if it does not exist.</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>
 </span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    Args:</span>
@@ -163,7 +163,7 @@
 </span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>
 </span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="k">def</span> <span class="nf">lbl_redefination</span><span class="p">(</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="k">def</span><span class="w"> </span><span class="nf">lbl_redefination</span><span class="p">(</span>
 </span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">threshold_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">input_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
@@ -184,7 +184,7 @@
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">)</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>
 </span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="k">def</span> <span class="nf">postprocess_single</span><span class="p">(</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="k">def</span><span class="w"> </span><span class="nf">postprocess_single</span><span class="p">(</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">input_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">seg_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">out_dir</span><span class="p">:</span> <span class="n">Path</span>
@@ -250,7 +250,7 @@
 </span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="k">return</span> <span class="n">out_path</span>
 </span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>
 </span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="k">def</span> <span class="nf">infer_single</span><span class="p">(</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="k">def</span><span class="w"> </span><span class="nf">infer_single</span><span class="p">(</span>
 </span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">input_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="n">out_dir</span><span class="p">:</span> <span class="n">Path</span>
 </span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -331,7 +331,7 @@
 </span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="p">)</span>
 </span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>
 </span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="k">def</span> <span class="nf">batch_processor</span><span class="p">(</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="k">def</span><span class="w"> </span><span class="nf">batch_processor</span><span class="p">(</span>
 </span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="n">input_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="n">output_folder</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -345,14 +345,14 @@
 </span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>        <span class="n">infer_single</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="n">output_folder</span><span class="p">))</span>
 </span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>
 </span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="k">def</span> <span class="nf">setup_model_weights</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="k">def</span><span class="w"> </span><span class="nf">setup_model_weights</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Install model weights from zip files.&quot;&quot;&quot;</span>
 </span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="n">install_model_from_zip</span><span class="p">(</span><span class="n">CONSTANTS</span><span class="p">[</span><span class="s1">&#39;nnunet_model_path&#39;</span><span class="p">])</span>
 </span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="n">install_model_from_zip</span><span class="p">(</span><span class="n">CONSTANTS</span><span class="p">[</span><span class="s1">&#39;swinunetr_model_path&#39;</span><span class="p">])</span>
 </span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="n">install_model_from_zip</span><span class="p">(</span><span class="n">CONSTANTS</span><span class="p">[</span><span class="s1">&#39;mednext_model_path&#39;</span><span class="p">],</span> <span class="n">mednext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>
 </span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="k">def</span> <span class="nf">batch_postprocess</span><span class="p">(</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="k">def</span><span class="w"> </span><span class="nf">batch_postprocess</span><span class="p">(</span>
 </span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="n">input_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="n">seg_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">output_folder</span><span class="p">:</span> <span class="nb">str</span>
@@ -515,7 +515,7 @@
 
     </div>
     <a class="headerlink" href="#maybe_make_dir"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="maybe_make_dir-49"><a href="#maybe_make_dir-49"><span class="linenos">49</span></a><span class="k">def</span> <span class="nf">maybe_make_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="maybe_make_dir-49"><a href="#maybe_make_dir-49"><span class="linenos">49</span></a><span class="k">def</span><span class="w"> </span><span class="nf">maybe_make_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
 </span><span id="maybe_make_dir-50"><a href="#maybe_make_dir-50"><span class="linenos">50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a directory if it does not exist.</span>
 </span><span id="maybe_make_dir-51"><a href="#maybe_make_dir-51"><span class="linenos">51</span></a>
 </span><span id="maybe_make_dir-52"><a href="#maybe_make_dir-52"><span class="linenos">52</span></a><span class="sd">    Args:</span>
@@ -551,7 +551,7 @@
 
     </div>
     <a class="headerlink" href="#lbl_redefination"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="lbl_redefination-62"><a href="#lbl_redefination-62"><span class="linenos">62</span></a><span class="k">def</span> <span class="nf">lbl_redefination</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="lbl_redefination-62"><a href="#lbl_redefination-62"><span class="linenos">62</span></a><span class="k">def</span><span class="w"> </span><span class="nf">lbl_redefination</span><span class="p">(</span>
 </span><span id="lbl_redefination-63"><a href="#lbl_redefination-63"><span class="linenos">63</span></a>    <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="lbl_redefination-64"><a href="#lbl_redefination-64"><span class="linenos">64</span></a>    <span class="n">threshold_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="lbl_redefination-65"><a href="#lbl_redefination-65"><span class="linenos">65</span></a>    <span class="n">input_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
@@ -596,7 +596,7 @@
 
     </div>
     <a class="headerlink" href="#postprocess_single"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="postprocess_single-83"><a href="#postprocess_single-83"><span class="linenos"> 83</span></a><span class="k">def</span> <span class="nf">postprocess_single</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="postprocess_single-83"><a href="#postprocess_single-83"><span class="linenos"> 83</span></a><span class="k">def</span><span class="w"> </span><span class="nf">postprocess_single</span><span class="p">(</span>
 </span><span id="postprocess_single-84"><a href="#postprocess_single-84"><span class="linenos"> 84</span></a>    <span class="n">input_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="postprocess_single-85"><a href="#postprocess_single-85"><span class="linenos"> 85</span></a>    <span class="n">seg_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="postprocess_single-86"><a href="#postprocess_single-86"><span class="linenos"> 86</span></a>    <span class="n">out_dir</span><span class="p">:</span> <span class="n">Path</span>
@@ -690,7 +690,7 @@ and redefines labels based on the processed data.</p>
 
     </div>
     <a class="headerlink" href="#infer_single"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="infer_single-149"><a href="#infer_single-149"><span class="linenos">149</span></a><span class="k">def</span> <span class="nf">infer_single</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="infer_single-149"><a href="#infer_single-149"><span class="linenos">149</span></a><span class="k">def</span><span class="w"> </span><span class="nf">infer_single</span><span class="p">(</span>
 </span><span id="infer_single-150"><a href="#infer_single-150"><span class="linenos">150</span></a>    <span class="n">input_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="infer_single-151"><a href="#infer_single-151"><span class="linenos">151</span></a>    <span class="n">out_dir</span><span class="p">:</span> <span class="n">Path</span>
 </span><span id="infer_single-152"><a href="#infer_single-152"><span class="linenos">152</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -795,7 +795,7 @@ ensembles the predictions, and postprocesses the segmentation.</p>
 
     </div>
     <a class="headerlink" href="#batch_processor"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="batch_processor-230"><a href="#batch_processor-230"><span class="linenos">230</span></a><span class="k">def</span> <span class="nf">batch_processor</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="batch_processor-230"><a href="#batch_processor-230"><span class="linenos">230</span></a><span class="k">def</span><span class="w"> </span><span class="nf">batch_processor</span><span class="p">(</span>
 </span><span id="batch_processor-231"><a href="#batch_processor-231"><span class="linenos">231</span></a>    <span class="n">input_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="batch_processor-232"><a href="#batch_processor-232"><span class="linenos">232</span></a>    <span class="n">output_folder</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="batch_processor-233"><a href="#batch_processor-233"><span class="linenos">233</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -830,7 +830,7 @@ ensembles the predictions, and postprocesses the segmentation.</p>
 
     </div>
     <a class="headerlink" href="#setup_model_weights"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="setup_model_weights-244"><a href="#setup_model_weights-244"><span class="linenos">244</span></a><span class="k">def</span> <span class="nf">setup_model_weights</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="setup_model_weights-244"><a href="#setup_model_weights-244"><span class="linenos">244</span></a><span class="k">def</span><span class="w"> </span><span class="nf">setup_model_weights</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="setup_model_weights-245"><a href="#setup_model_weights-245"><span class="linenos">245</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Install model weights from zip files.&quot;&quot;&quot;</span>
 </span><span id="setup_model_weights-246"><a href="#setup_model_weights-246"><span class="linenos">246</span></a>    <span class="n">install_model_from_zip</span><span class="p">(</span><span class="n">CONSTANTS</span><span class="p">[</span><span class="s1">&#39;nnunet_model_path&#39;</span><span class="p">])</span>
 </span><span id="setup_model_weights-247"><a href="#setup_model_weights-247"><span class="linenos">247</span></a>    <span class="n">install_model_from_zip</span><span class="p">(</span><span class="n">CONSTANTS</span><span class="p">[</span><span class="s1">&#39;swinunetr_model_path&#39;</span><span class="p">])</span>
@@ -854,7 +854,7 @@ ensembles the predictions, and postprocesses the segmentation.</p>
 
     </div>
     <a class="headerlink" href="#batch_postprocess"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="batch_postprocess-251"><a href="#batch_postprocess-251"><span class="linenos">251</span></a><span class="k">def</span> <span class="nf">batch_postprocess</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="batch_postprocess-251"><a href="#batch_postprocess-251"><span class="linenos">251</span></a><span class="k">def</span><span class="w"> </span><span class="nf">batch_postprocess</span><span class="p">(</span>
 </span><span id="batch_postprocess-252"><a href="#batch_postprocess-252"><span class="linenos">252</span></a>    <span class="n">input_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="batch_postprocess-253"><a href="#batch_postprocess-253"><span class="linenos">253</span></a>    <span class="n">seg_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="batch_postprocess-254"><a href="#batch_postprocess-254"><span class="linenos">254</span></a>    <span class="n">output_folder</span><span class="p">:</span> <span class="nb">str</span>

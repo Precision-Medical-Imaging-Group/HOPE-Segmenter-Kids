@@ -92,22 +92,22 @@
 </span><span id="L-5"><a href="#L-5"><span class="linenos">  5</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a>
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a>
-</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">import</span> <span class="nn">os</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span> <span class="nn">time</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">import</span> <span class="nn">json</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">import</span> <span class="nn">argparse</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">import</span> <span class="nn">cc3d</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">binary_dilation</span><span class="p">,</span> <span class="n">generate_binary_structure</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="kn">import</span> <span class="nn">shutil</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="kn">import</span> <span class="nn">warnings</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">nibabel</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nib</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">cc3d</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.ndimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">binary_dilation</span><span class="p">,</span> <span class="n">generate_binary_structure</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="k">def</span> <span class="nf">load_json</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="k">def</span><span class="w"> </span><span class="nf">load_json</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a><span class="sd">    Loads a JSON file from the specified path.</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>
@@ -121,7 +121,7 @@
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>
 </span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="k">def</span> <span class="nf">save_json</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="k">def</span><span class="w"> </span><span class="nf">save_json</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">    Saves data to a JSON file at the specified path.</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>
@@ -133,7 +133,7 @@
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>
 </span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="k">def</span> <span class="nf">load_jsonl</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="k">def</span><span class="w"> </span><span class="nf">load_jsonl</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    Loads a JSONL file (JSON lines) from the specified path.</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>
@@ -147,7 +147,7 @@
 </span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>        <span class="k">return</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>
 </span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="k">def</span> <span class="nf">save_jsonl</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="k">def</span><span class="w"> </span><span class="nf">save_jsonl</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">    Saves data to a JSONL file at the specified path.</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>
@@ -161,7 +161,7 @@
 </span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>
 </span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="k">def</span> <span class="nf">maybe_make_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="k">def</span><span class="w"> </span><span class="nf">maybe_make_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    Creates a directory at the specified path if it does not exist.</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>
@@ -177,7 +177,7 @@
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="k">return</span> <span class="n">dir_path</span>
 </span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>
 </span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="k">def</span> <span class="nf">maybe_remove_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="k">def</span><span class="w"> </span><span class="nf">maybe_remove_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
 </span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    Removes a directory at the specified path if it exists.</span>
 </span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>
@@ -197,7 +197,7 @@
 </span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="k">return</span> <span class="n">path_obj</span>
 </span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>
 </span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="k">def</span> <span class="nf">extract_feature</span><span class="p">(</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="k">def</span><span class="w"> </span><span class="nf">extract_feature</span><span class="p">(</span>
 </span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">paramfile</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">data_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">seg_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
@@ -245,7 +245,7 @@
 </span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">return</span> <span class="n">new_dict</span>
 </span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>
 </span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="k">def</span> <span class="nf">extract_case</span><span class="p">(</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="k">def</span><span class="w"> </span><span class="nf">extract_case</span><span class="p">(</span>
 </span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">paramfile</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">data_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">seg_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
@@ -284,7 +284,7 @@
 </span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="k">return</span> <span class="n">new_dict</span>
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>
 </span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="k">def</span> <span class="nf">create_dilation</span><span class="p">(</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="k">def</span><span class="w"> </span><span class="nf">create_dilation</span><span class="p">(</span>
 </span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">seg_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">out_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">dilation_factor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
@@ -327,7 +327,7 @@
 </span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="n">nib</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">seg_obj</span><span class="p">,</span> <span class="n">out_path</span><span class="p">)</span>
 </span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>
 </span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="k">def</span> <span class="nf">extract_all</span><span class="p">(</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="k">def</span><span class="w"> </span><span class="nf">extract_all</span><span class="p">(</span>
 </span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="n">paramfile</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="n">data_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="n">case_</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -425,7 +425,7 @@
 
     </div>
     <a class="headerlink" href="#load_json"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="load_json-24"><a href="#load_json-24"><span class="linenos">24</span></a><span class="k">def</span> <span class="nf">load_json</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="load_json-24"><a href="#load_json-24"><span class="linenos">24</span></a><span class="k">def</span><span class="w"> </span><span class="nf">load_json</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 </span><span id="load_json-25"><a href="#load_json-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="load_json-26"><a href="#load_json-26"><span class="linenos">26</span></a><span class="sd">    Loads a JSON file from the specified path.</span>
 </span><span id="load_json-27"><a href="#load_json-27"><span class="linenos">27</span></a>
@@ -462,7 +462,7 @@
 
     </div>
     <a class="headerlink" href="#save_json"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="save_json-38"><a href="#save_json-38"><span class="linenos">38</span></a><span class="k">def</span> <span class="nf">save_json</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="save_json-38"><a href="#save_json-38"><span class="linenos">38</span></a><span class="k">def</span><span class="w"> </span><span class="nf">save_json</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="save_json-39"><a href="#save_json-39"><span class="linenos">39</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="save_json-40"><a href="#save_json-40"><span class="linenos">40</span></a><span class="sd">    Saves data to a JSON file at the specified path.</span>
 </span><span id="save_json-41"><a href="#save_json-41"><span class="linenos">41</span></a>
@@ -495,7 +495,7 @@
 
     </div>
     <a class="headerlink" href="#load_jsonl"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="load_jsonl-50"><a href="#load_jsonl-50"><span class="linenos">50</span></a><span class="k">def</span> <span class="nf">load_jsonl</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="load_jsonl-50"><a href="#load_jsonl-50"><span class="linenos">50</span></a><span class="k">def</span><span class="w"> </span><span class="nf">load_jsonl</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
 </span><span id="load_jsonl-51"><a href="#load_jsonl-51"><span class="linenos">51</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="load_jsonl-52"><a href="#load_jsonl-52"><span class="linenos">52</span></a><span class="sd">    Loads a JSONL file (JSON lines) from the specified path.</span>
 </span><span id="load_jsonl-53"><a href="#load_jsonl-53"><span class="linenos">53</span></a>
@@ -532,7 +532,7 @@
 
     </div>
     <a class="headerlink" href="#save_jsonl"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="save_jsonl-64"><a href="#save_jsonl-64"><span class="linenos">64</span></a><span class="k">def</span> <span class="nf">save_jsonl</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="save_jsonl-64"><a href="#save_jsonl-64"><span class="linenos">64</span></a><span class="k">def</span><span class="w"> </span><span class="nf">save_jsonl</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="save_jsonl-65"><a href="#save_jsonl-65"><span class="linenos">65</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="save_jsonl-66"><a href="#save_jsonl-66"><span class="linenos">66</span></a><span class="sd">    Saves data to a JSONL file at the specified path.</span>
 </span><span id="save_jsonl-67"><a href="#save_jsonl-67"><span class="linenos">67</span></a>
@@ -567,7 +567,7 @@
 
     </div>
     <a class="headerlink" href="#maybe_make_dir"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="maybe_make_dir-78"><a href="#maybe_make_dir-78"><span class="linenos">78</span></a><span class="k">def</span> <span class="nf">maybe_make_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="maybe_make_dir-78"><a href="#maybe_make_dir-78"><span class="linenos">78</span></a><span class="k">def</span><span class="w"> </span><span class="nf">maybe_make_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
 </span><span id="maybe_make_dir-79"><a href="#maybe_make_dir-79"><span class="linenos">79</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="maybe_make_dir-80"><a href="#maybe_make_dir-80"><span class="linenos">80</span></a><span class="sd">    Creates a directory at the specified path if it does not exist.</span>
 </span><span id="maybe_make_dir-81"><a href="#maybe_make_dir-81"><span class="linenos">81</span></a>
@@ -606,7 +606,7 @@
 
     </div>
     <a class="headerlink" href="#maybe_remove_dir"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="maybe_remove_dir-94"><a href="#maybe_remove_dir-94"><span class="linenos"> 94</span></a><span class="k">def</span> <span class="nf">maybe_remove_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="maybe_remove_dir-94"><a href="#maybe_remove_dir-94"><span class="linenos"> 94</span></a><span class="k">def</span><span class="w"> </span><span class="nf">maybe_remove_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
 </span><span id="maybe_remove_dir-95"><a href="#maybe_remove_dir-95"><span class="linenos"> 95</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="maybe_remove_dir-96"><a href="#maybe_remove_dir-96"><span class="linenos"> 96</span></a><span class="sd">    Removes a directory at the specified path if it exists.</span>
 </span><span id="maybe_remove_dir-97"><a href="#maybe_remove_dir-97"><span class="linenos"> 97</span></a>
@@ -649,7 +649,7 @@
 
     </div>
     <a class="headerlink" href="#extract_feature"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="extract_feature-114"><a href="#extract_feature-114"><span class="linenos">114</span></a><span class="k">def</span> <span class="nf">extract_feature</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="extract_feature-114"><a href="#extract_feature-114"><span class="linenos">114</span></a><span class="k">def</span><span class="w"> </span><span class="nf">extract_feature</span><span class="p">(</span>
 </span><span id="extract_feature-115"><a href="#extract_feature-115"><span class="linenos">115</span></a>    <span class="n">paramfile</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="extract_feature-116"><a href="#extract_feature-116"><span class="linenos">116</span></a>    <span class="n">data_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="extract_feature-117"><a href="#extract_feature-117"><span class="linenos">117</span></a>    <span class="n">seg_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
@@ -726,7 +726,7 @@
 
     </div>
     <a class="headerlink" href="#extract_case"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="extract_case-162"><a href="#extract_case-162"><span class="linenos">162</span></a><span class="k">def</span> <span class="nf">extract_case</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="extract_case-162"><a href="#extract_case-162"><span class="linenos">162</span></a><span class="k">def</span><span class="w"> </span><span class="nf">extract_case</span><span class="p">(</span>
 </span><span id="extract_case-163"><a href="#extract_case-163"><span class="linenos">163</span></a>    <span class="n">paramfile</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="extract_case-164"><a href="#extract_case-164"><span class="linenos">164</span></a>    <span class="n">data_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="extract_case-165"><a href="#extract_case-165"><span class="linenos">165</span></a>    <span class="n">seg_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
@@ -794,7 +794,7 @@
 
     </div>
     <a class="headerlink" href="#create_dilation"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="create_dilation-201"><a href="#create_dilation-201"><span class="linenos">201</span></a><span class="k">def</span> <span class="nf">create_dilation</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="create_dilation-201"><a href="#create_dilation-201"><span class="linenos">201</span></a><span class="k">def</span><span class="w"> </span><span class="nf">create_dilation</span><span class="p">(</span>
 </span><span id="create_dilation-202"><a href="#create_dilation-202"><span class="linenos">202</span></a>    <span class="n">seg_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="create_dilation-203"><a href="#create_dilation-203"><span class="linenos">203</span></a>    <span class="n">out_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="create_dilation-204"><a href="#create_dilation-204"><span class="linenos">204</span></a>    <span class="n">dilation_factor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
@@ -860,7 +860,7 @@
 
     </div>
     <a class="headerlink" href="#extract_all"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="extract_all-244"><a href="#extract_all-244"><span class="linenos">244</span></a><span class="k">def</span> <span class="nf">extract_all</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="extract_all-244"><a href="#extract_all-244"><span class="linenos">244</span></a><span class="k">def</span><span class="w"> </span><span class="nf">extract_all</span><span class="p">(</span>
 </span><span id="extract_all-245"><a href="#extract_all-245"><span class="linenos">245</span></a>    <span class="n">paramfile</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="extract_all-246"><a href="#extract_all-246"><span class="linenos">246</span></a>    <span class="n">data_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="extract_all-247"><a href="#extract_all-247"><span class="linenos">247</span></a>    <span class="n">case_</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
