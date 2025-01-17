@@ -23,7 +23,7 @@ def image_to_base64(image_path:str)-> str:
 
     with open(image_path, "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
-        
+
     return 'data:image/jpeg;base64,'+encoded_string
 
 # Example usage
@@ -381,7 +381,7 @@ def render_sagittal(file_to_render: str, x: int) -> Tuple[PIL.Image.Image, List[
 
 
 # Gradio UI Setup
-with gr.Blocks() as demo:
+with gr.Blocks(title="Pediatric Segmenter") as demo:
     # Header
     gr.HTML(
         value=f"<center><font size='6'><bold> Children's National Pediatric Brain Tumor Segmenter</bold></font></center>"
@@ -527,4 +527,4 @@ with gr.Blocks() as demo:
     )
 
 if __name__ == "__main__":
-    demo.queue().launch(server_name="0.0.0.0")#, server_port=7860)
+    demo.queue().launch(server_name="0.0.0.0", server_port=7860, show_api=False, favicon_path='./app_assets/favicon.ico')
