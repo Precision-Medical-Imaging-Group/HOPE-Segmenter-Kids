@@ -113,24 +113,24 @@
 </span><span id="L-5"><a href="#L-5"><span class="linenos">  5</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a>
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a>
-</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">import</span> <span class="nn">pickle</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span> <span class="nn">argparse</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">import</span> <span class="nn">json</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="kn">import</span> <span class="nn">cc3d</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="kn">import</span> <span class="nn">SimpleITK</span> <span class="k">as</span> <span class="nn">sitk</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">import</span> <span class="nn">glob</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="kn">import</span> <span class="nn">os</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="kn">import</span> <span class="nn">shutil</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="kn">import</span> <span class="nn">warnings</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Dict</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">nibabel</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nib</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">cc3d</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">SimpleITK</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sitk</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Dict</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a><span class="k">def</span> <span class="nf">maybe_make_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a><span class="k">def</span><span class="w"> </span><span class="nf">maybe_make_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a><span class="sd">    Creates a directory at the specified path if it does not exist.</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>
@@ -141,7 +141,7 @@
 </span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>
 </span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="k">def</span> <span class="nf">read_image</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">sitk</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="k">def</span><span class="w"> </span><span class="nf">read_image</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">sitk</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">    Reads an image file and returns the SimpleITK image object and its NumPy array.</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>
@@ -156,7 +156,7 @@
 </span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>    <span class="k">return</span> <span class="n">img_sitk</span><span class="p">,</span> <span class="n">img</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="k">def</span> <span class="nf">convert_labels_back_to_BraTS</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="k">def</span><span class="w"> </span><span class="nf">convert_labels_back_to_BraTS</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    Converts segmentation labels back to BraTS format.</span>
 </span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>
@@ -173,7 +173,7 @@
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="k">return</span> <span class="n">new_seg</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>
 </span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="k">def</span> <span class="nf">get_ratio_ncr_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_ratio_ncr_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    Calculates the ratio of necrotic and non-enhancing tumor core (NCR) voxels to whole tumor (WT) voxels.</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>
@@ -190,7 +190,7 @@
 </span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="k">return</span> <span class="n">ncr_voxels</span> <span class="o">/</span> <span class="n">wt_voxels</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="k">def</span> <span class="nf">get_ratio_ed_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_ratio_ed_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    Calculates the ratio of peritumoral edema (ED) voxels to whole tumor (WT) voxels.</span>
 </span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>
@@ -207,7 +207,7 @@
 </span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">return</span> <span class="n">ed_voxels</span> <span class="o">/</span> <span class="n">wt_voxels</span>
 </span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>
 </span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="k">def</span> <span class="nf">get_ratio_et_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_ratio_et_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">    Calculates the ratio of enhancing tumor (ET) voxels to whole tumor (WT) voxels.</span>
 </span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>
@@ -224,7 +224,7 @@
 </span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">return</span> <span class="n">et_voxels</span> <span class="o">/</span> <span class="n">wt_voxels</span>
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>
 </span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="k">def</span> <span class="nf">get_ratio_tc_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_ratio_tc_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">    Calculates the ratio of tumor core (TC) voxels to whole tumor (WT) voxels.</span>
 </span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>
@@ -241,7 +241,7 @@
 </span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">return</span> <span class="n">tc_voxels</span> <span class="o">/</span> <span class="n">wt_voxels</span>
 </span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>
 </span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="k">def</span> <span class="nf">convert_et_to_ncr</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="k">def</span><span class="w"> </span><span class="nf">convert_et_to_ncr</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 </span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">    Converts enhancing tumor (ET) labels to necrotic and non-enhancing tumor core (NCR).</span>
 </span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>
@@ -255,7 +255,7 @@
 </span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">return</span> <span class="n">seg</span>
 </span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>
 </span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="k">def</span> <span class="nf">convert_ed_to_ncr</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="k">def</span><span class="w"> </span><span class="nf">convert_ed_to_ncr</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 </span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">    Converts peritumoral edema (ED) labels to necrotic and non-enhancing tumor core (NCR).</span>
 </span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>
@@ -269,7 +269,7 @@
 </span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="k">return</span> <span class="n">seg</span>
 </span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>
 </span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="k">def</span> <span class="nf">get_greatest_label</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_greatest_label</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
 </span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    Determines the label with the highest ratio to whole tumor (WT) voxels.</span>
 </span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>
@@ -289,7 +289,7 @@
 </span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="k">return</span> <span class="n">greatest_label</span><span class="p">,</span> <span class="n">ratios</span><span class="p">[</span><span class="n">greatest_label</span><span class="p">]</span>
 </span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>
 </span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="k">def</span> <span class="nf">redefine_et_ed_labels</span><span class="p">(</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="k">def</span><span class="w"> </span><span class="nf">redefine_et_ed_labels</span><span class="p">(</span>
 </span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">seg_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">out_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span>
@@ -322,7 +322,7 @@
 </span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">return</span> <span class="n">seg</span>
 </span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>
 </span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="k">def</span> <span class="nf">postprocess_image</span><span class="p">(</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="k">def</span><span class="w"> </span><span class="nf">postprocess_image</span><span class="p">(</span>
 </span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
 </span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="n">ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.04</span>
@@ -349,7 +349,7 @@
 </span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="k">return</span> <span class="n">seg</span>
 </span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>
 </span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="k">def</span> <span class="nf">save_image</span><span class="p">(</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="k">def</span><span class="w"> </span><span class="nf">save_image</span><span class="p">(</span>
 </span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
 </span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="n">img_sitk</span><span class="p">:</span> <span class="n">sitk</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span>
 </span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="n">out_path</span><span class="p">:</span> <span class="n">Path</span>
@@ -367,7 +367,7 @@
 </span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="n">sitk</span><span class="o">.</span><span class="n">WriteImage</span><span class="p">(</span><span class="n">new_img_sitk</span><span class="p">,</span> <span class="n">out_path</span><span class="p">)</span>
 </span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>
 </span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="k">def</span> <span class="nf">postprocess_batch</span><span class="p">(</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="k">def</span><span class="w"> </span><span class="nf">postprocess_batch</span><span class="p">(</span>
 </span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="n">input_folder</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="n">output_folder</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>    <span class="n">label_to_optimize</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -394,7 +394,7 @@
 </span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>        <span class="n">save_image</span><span class="p">(</span><span class="n">seg_pp</span><span class="p">,</span> <span class="n">seg_sitk</span><span class="p">,</span> <span class="n">out_path</span><span class="p">)</span>
 </span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>
 </span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="k">def</span> <span class="nf">get_connected_labels</span><span class="p">(</span><span class="n">seg_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_connected_labels</span><span class="p">(</span><span class="n">seg_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
 </span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">    Identifies connected components for NCR, ED, and ET labels in the segmentation.</span>
 </span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>
@@ -417,7 +417,7 @@
 </span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="k">return</span> <span class="n">labels_ncr</span><span class="p">,</span> <span class="n">labels_ed</span><span class="p">,</span> <span class="n">labels_et</span><span class="p">,</span> <span class="n">n_ncr</span><span class="p">,</span> <span class="n">n_ed</span><span class="p">,</span> <span class="n">n_et</span>
 </span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>
 </span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="k">def</span> <span class="nf">remove_disconnected</span><span class="p">(</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="k">def</span><span class="w"> </span><span class="nf">remove_disconnected</span><span class="p">(</span>
 </span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="n">seg_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="n">out_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="n">t_ncr</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
@@ -481,7 +481,7 @@
 </span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>    <span class="k">return</span> <span class="n">removed_ncr</span><span class="p">,</span> <span class="n">n_ncr</span><span class="p">,</span> <span class="n">removed_ed</span><span class="p">,</span> <span class="n">n_ed</span><span class="p">,</span> <span class="n">removed_et</span><span class="p">,</span> <span class="n">n_et</span>
 </span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>
 </span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="k">def</span> <span class="nf">remove_disconnected_from_dir</span><span class="p">(</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="k">def</span><span class="w"> </span><span class="nf">remove_disconnected_from_dir</span><span class="p">(</span>
 </span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="n">input_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>    <span class="n">t_ncr</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
@@ -534,7 +534,7 @@
 
     </div>
     <a class="headerlink" href="#maybe_make_dir"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="maybe_make_dir-26"><a href="#maybe_make_dir-26"><span class="linenos">26</span></a><span class="k">def</span> <span class="nf">maybe_make_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="maybe_make_dir-26"><a href="#maybe_make_dir-26"><span class="linenos">26</span></a><span class="k">def</span><span class="w"> </span><span class="nf">maybe_make_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="maybe_make_dir-27"><a href="#maybe_make_dir-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="maybe_make_dir-28"><a href="#maybe_make_dir-28"><span class="linenos">28</span></a><span class="sd">    Creates a directory at the specified path if it does not exist.</span>
 </span><span id="maybe_make_dir-29"><a href="#maybe_make_dir-29"><span class="linenos">29</span></a>
@@ -565,7 +565,7 @@
 
     </div>
     <a class="headerlink" href="#read_image"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="read_image-37"><a href="#read_image-37"><span class="linenos">37</span></a><span class="k">def</span> <span class="nf">read_image</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">sitk</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="read_image-37"><a href="#read_image-37"><span class="linenos">37</span></a><span class="k">def</span><span class="w"> </span><span class="nf">read_image</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">sitk</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
 </span><span id="read_image-38"><a href="#read_image-38"><span class="linenos">38</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="read_image-39"><a href="#read_image-39"><span class="linenos">39</span></a><span class="sd">    Reads an image file and returns the SimpleITK image object and its NumPy array.</span>
 </span><span id="read_image-40"><a href="#read_image-40"><span class="linenos">40</span></a>
@@ -603,7 +603,7 @@
 
     </div>
     <a class="headerlink" href="#convert_labels_back_to_BraTS"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="convert_labels_back_to_BraTS-52"><a href="#convert_labels_back_to_BraTS-52"><span class="linenos">52</span></a><span class="k">def</span> <span class="nf">convert_labels_back_to_BraTS</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="convert_labels_back_to_BraTS-52"><a href="#convert_labels_back_to_BraTS-52"><span class="linenos">52</span></a><span class="k">def</span><span class="w"> </span><span class="nf">convert_labels_back_to_BraTS</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 </span><span id="convert_labels_back_to_BraTS-53"><a href="#convert_labels_back_to_BraTS-53"><span class="linenos">53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="convert_labels_back_to_BraTS-54"><a href="#convert_labels_back_to_BraTS-54"><span class="linenos">54</span></a><span class="sd">    Converts segmentation labels back to BraTS format.</span>
 </span><span id="convert_labels_back_to_BraTS-55"><a href="#convert_labels_back_to_BraTS-55"><span class="linenos">55</span></a>
@@ -643,7 +643,7 @@
 
     </div>
     <a class="headerlink" href="#get_ratio_ncr_wt"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="get_ratio_ncr_wt-69"><a href="#get_ratio_ncr_wt-69"><span class="linenos">69</span></a><span class="k">def</span> <span class="nf">get_ratio_ncr_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_ratio_ncr_wt-69"><a href="#get_ratio_ncr_wt-69"><span class="linenos">69</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_ratio_ncr_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="get_ratio_ncr_wt-70"><a href="#get_ratio_ncr_wt-70"><span class="linenos">70</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="get_ratio_ncr_wt-71"><a href="#get_ratio_ncr_wt-71"><span class="linenos">71</span></a><span class="sd">    Calculates the ratio of necrotic and non-enhancing tumor core (NCR) voxels to whole tumor (WT) voxels.</span>
 </span><span id="get_ratio_ncr_wt-72"><a href="#get_ratio_ncr_wt-72"><span class="linenos">72</span></a>
@@ -683,7 +683,7 @@
 
     </div>
     <a class="headerlink" href="#get_ratio_ed_wt"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="get_ratio_ed_wt-86"><a href="#get_ratio_ed_wt-86"><span class="linenos"> 86</span></a><span class="k">def</span> <span class="nf">get_ratio_ed_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_ratio_ed_wt-86"><a href="#get_ratio_ed_wt-86"><span class="linenos"> 86</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_ratio_ed_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="get_ratio_ed_wt-87"><a href="#get_ratio_ed_wt-87"><span class="linenos"> 87</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="get_ratio_ed_wt-88"><a href="#get_ratio_ed_wt-88"><span class="linenos"> 88</span></a><span class="sd">    Calculates the ratio of peritumoral edema (ED) voxels to whole tumor (WT) voxels.</span>
 </span><span id="get_ratio_ed_wt-89"><a href="#get_ratio_ed_wt-89"><span class="linenos"> 89</span></a>
@@ -723,7 +723,7 @@
 
     </div>
     <a class="headerlink" href="#get_ratio_et_wt"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="get_ratio_et_wt-103"><a href="#get_ratio_et_wt-103"><span class="linenos">103</span></a><span class="k">def</span> <span class="nf">get_ratio_et_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_ratio_et_wt-103"><a href="#get_ratio_et_wt-103"><span class="linenos">103</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_ratio_et_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="get_ratio_et_wt-104"><a href="#get_ratio_et_wt-104"><span class="linenos">104</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="get_ratio_et_wt-105"><a href="#get_ratio_et_wt-105"><span class="linenos">105</span></a><span class="sd">    Calculates the ratio of enhancing tumor (ET) voxels to whole tumor (WT) voxels.</span>
 </span><span id="get_ratio_et_wt-106"><a href="#get_ratio_et_wt-106"><span class="linenos">106</span></a>
@@ -763,7 +763,7 @@
 
     </div>
     <a class="headerlink" href="#get_ratio_tc_wt"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="get_ratio_tc_wt-120"><a href="#get_ratio_tc_wt-120"><span class="linenos">120</span></a><span class="k">def</span> <span class="nf">get_ratio_tc_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_ratio_tc_wt-120"><a href="#get_ratio_tc_wt-120"><span class="linenos">120</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_ratio_tc_wt</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="get_ratio_tc_wt-121"><a href="#get_ratio_tc_wt-121"><span class="linenos">121</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="get_ratio_tc_wt-122"><a href="#get_ratio_tc_wt-122"><span class="linenos">122</span></a><span class="sd">    Calculates the ratio of tumor core (TC) voxels to whole tumor (WT) voxels.</span>
 </span><span id="get_ratio_tc_wt-123"><a href="#get_ratio_tc_wt-123"><span class="linenos">123</span></a>
@@ -803,7 +803,7 @@
 
     </div>
     <a class="headerlink" href="#convert_et_to_ncr"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="convert_et_to_ncr-137"><a href="#convert_et_to_ncr-137"><span class="linenos">137</span></a><span class="k">def</span> <span class="nf">convert_et_to_ncr</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="convert_et_to_ncr-137"><a href="#convert_et_to_ncr-137"><span class="linenos">137</span></a><span class="k">def</span><span class="w"> </span><span class="nf">convert_et_to_ncr</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 </span><span id="convert_et_to_ncr-138"><a href="#convert_et_to_ncr-138"><span class="linenos">138</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="convert_et_to_ncr-139"><a href="#convert_et_to_ncr-139"><span class="linenos">139</span></a><span class="sd">    Converts enhancing tumor (ET) labels to necrotic and non-enhancing tumor core (NCR).</span>
 </span><span id="convert_et_to_ncr-140"><a href="#convert_et_to_ncr-140"><span class="linenos">140</span></a>
@@ -840,7 +840,7 @@
 
     </div>
     <a class="headerlink" href="#convert_ed_to_ncr"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="convert_ed_to_ncr-151"><a href="#convert_ed_to_ncr-151"><span class="linenos">151</span></a><span class="k">def</span> <span class="nf">convert_ed_to_ncr</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="convert_ed_to_ncr-151"><a href="#convert_ed_to_ncr-151"><span class="linenos">151</span></a><span class="k">def</span><span class="w"> </span><span class="nf">convert_ed_to_ncr</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 </span><span id="convert_ed_to_ncr-152"><a href="#convert_ed_to_ncr-152"><span class="linenos">152</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="convert_ed_to_ncr-153"><a href="#convert_ed_to_ncr-153"><span class="linenos">153</span></a><span class="sd">    Converts peritumoral edema (ED) labels to necrotic and non-enhancing tumor core (NCR).</span>
 </span><span id="convert_ed_to_ncr-154"><a href="#convert_ed_to_ncr-154"><span class="linenos">154</span></a>
@@ -877,7 +877,7 @@
 
     </div>
     <a class="headerlink" href="#get_greatest_label"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="get_greatest_label-165"><a href="#get_greatest_label-165"><span class="linenos">165</span></a><span class="k">def</span> <span class="nf">get_greatest_label</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_greatest_label-165"><a href="#get_greatest_label-165"><span class="linenos">165</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_greatest_label</span><span class="p">(</span><span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
 </span><span id="get_greatest_label-166"><a href="#get_greatest_label-166"><span class="linenos">166</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="get_greatest_label-167"><a href="#get_greatest_label-167"><span class="linenos">167</span></a><span class="sd">    Determines the label with the highest ratio to whole tumor (WT) voxels.</span>
 </span><span id="get_greatest_label-168"><a href="#get_greatest_label-168"><span class="linenos">168</span></a>
@@ -920,7 +920,7 @@
 
     </div>
     <a class="headerlink" href="#redefine_et_ed_labels"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="redefine_et_ed_labels-185"><a href="#redefine_et_ed_labels-185"><span class="linenos">185</span></a><span class="k">def</span> <span class="nf">redefine_et_ed_labels</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="redefine_et_ed_labels-185"><a href="#redefine_et_ed_labels-185"><span class="linenos">185</span></a><span class="k">def</span><span class="w"> </span><span class="nf">redefine_et_ed_labels</span><span class="p">(</span>
 </span><span id="redefine_et_ed_labels-186"><a href="#redefine_et_ed_labels-186"><span class="linenos">186</span></a>    <span class="n">seg_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="redefine_et_ed_labels-187"><a href="#redefine_et_ed_labels-187"><span class="linenos">187</span></a>    <span class="n">out_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="redefine_et_ed_labels-188"><a href="#redefine_et_ed_labels-188"><span class="linenos">188</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span>
@@ -979,7 +979,7 @@
 
     </div>
     <a class="headerlink" href="#postprocess_image"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="postprocess_image-218"><a href="#postprocess_image-218"><span class="linenos">218</span></a><span class="k">def</span> <span class="nf">postprocess_image</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="postprocess_image-218"><a href="#postprocess_image-218"><span class="linenos">218</span></a><span class="k">def</span><span class="w"> </span><span class="nf">postprocess_image</span><span class="p">(</span>
 </span><span id="postprocess_image-219"><a href="#postprocess_image-219"><span class="linenos">219</span></a>    <span class="n">seg</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
 </span><span id="postprocess_image-220"><a href="#postprocess_image-220"><span class="linenos">220</span></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="postprocess_image-221"><a href="#postprocess_image-221"><span class="linenos">221</span></a>    <span class="n">ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.04</span>
@@ -1031,7 +1031,7 @@
 
     </div>
     <a class="headerlink" href="#save_image"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="save_image-245"><a href="#save_image-245"><span class="linenos">245</span></a><span class="k">def</span> <span class="nf">save_image</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="save_image-245"><a href="#save_image-245"><span class="linenos">245</span></a><span class="k">def</span><span class="w"> </span><span class="nf">save_image</span><span class="p">(</span>
 </span><span id="save_image-246"><a href="#save_image-246"><span class="linenos">246</span></a>    <span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
 </span><span id="save_image-247"><a href="#save_image-247"><span class="linenos">247</span></a>    <span class="n">img_sitk</span><span class="p">:</span> <span class="n">sitk</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span>
 </span><span id="save_image-248"><a href="#save_image-248"><span class="linenos">248</span></a>    <span class="n">out_path</span><span class="p">:</span> <span class="n">Path</span>
@@ -1071,7 +1071,7 @@
 
     </div>
     <a class="headerlink" href="#postprocess_batch"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="postprocess_batch-263"><a href="#postprocess_batch-263"><span class="linenos">263</span></a><span class="k">def</span> <span class="nf">postprocess_batch</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="postprocess_batch-263"><a href="#postprocess_batch-263"><span class="linenos">263</span></a><span class="k">def</span><span class="w"> </span><span class="nf">postprocess_batch</span><span class="p">(</span>
 </span><span id="postprocess_batch-264"><a href="#postprocess_batch-264"><span class="linenos">264</span></a>    <span class="n">input_folder</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="postprocess_batch-265"><a href="#postprocess_batch-265"><span class="linenos">265</span></a>    <span class="n">output_folder</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="postprocess_batch-266"><a href="#postprocess_batch-266"><span class="linenos">266</span></a>    <span class="n">label_to_optimize</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -1122,7 +1122,7 @@
 
     </div>
     <a class="headerlink" href="#get_connected_labels"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="get_connected_labels-290"><a href="#get_connected_labels-290"><span class="linenos">290</span></a><span class="k">def</span> <span class="nf">get_connected_labels</span><span class="p">(</span><span class="n">seg_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_connected_labels-290"><a href="#get_connected_labels-290"><span class="linenos">290</span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_connected_labels</span><span class="p">(</span><span class="n">seg_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
 </span><span id="get_connected_labels-291"><a href="#get_connected_labels-291"><span class="linenos">291</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="get_connected_labels-292"><a href="#get_connected_labels-292"><span class="linenos">292</span></a><span class="sd">    Identifies connected components for NCR, ED, and ET labels in the segmentation.</span>
 </span><span id="get_connected_labels-293"><a href="#get_connected_labels-293"><span class="linenos">293</span></a>
@@ -1170,7 +1170,7 @@
 
     </div>
     <a class="headerlink" href="#remove_disconnected"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="remove_disconnected-313"><a href="#remove_disconnected-313"><span class="linenos">313</span></a><span class="k">def</span> <span class="nf">remove_disconnected</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="remove_disconnected-313"><a href="#remove_disconnected-313"><span class="linenos">313</span></a><span class="k">def</span><span class="w"> </span><span class="nf">remove_disconnected</span><span class="p">(</span>
 </span><span id="remove_disconnected-314"><a href="#remove_disconnected-314"><span class="linenos">314</span></a>    <span class="n">seg_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="remove_disconnected-315"><a href="#remove_disconnected-315"><span class="linenos">315</span></a>    <span class="n">out_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="remove_disconnected-316"><a href="#remove_disconnected-316"><span class="linenos">316</span></a>    <span class="n">t_ncr</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
@@ -1262,7 +1262,7 @@
 
     </div>
     <a class="headerlink" href="#remove_disconnected_from_dir"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="remove_disconnected_from_dir-377"><a href="#remove_disconnected_from_dir-377"><span class="linenos">377</span></a><span class="k">def</span> <span class="nf">remove_disconnected_from_dir</span><span class="p">(</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="remove_disconnected_from_dir-377"><a href="#remove_disconnected_from_dir-377"><span class="linenos">377</span></a><span class="k">def</span><span class="w"> </span><span class="nf">remove_disconnected_from_dir</span><span class="p">(</span>
 </span><span id="remove_disconnected_from_dir-378"><a href="#remove_disconnected_from_dir-378"><span class="linenos">378</span></a>    <span class="n">input_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="remove_disconnected_from_dir-379"><a href="#remove_disconnected_from_dir-379"><span class="linenos">379</span></a>    <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="remove_disconnected_from_dir-380"><a href="#remove_disconnected_from_dir-380"><span class="linenos">380</span></a>    <span class="n">t_ncr</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
