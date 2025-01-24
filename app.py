@@ -11,6 +11,7 @@ from typing import Tuple, List, Dict, Any
 import shutil
 import base64
 
+
 def image_to_base64(image_path:str)-> str:
     """Convert a image to the base64 encoding for display of banner.
 
@@ -43,7 +44,7 @@ DUMMY_FILE_NAMES = {
 }
 
 # Docker image for inference
-docker = "aparida12/brats-peds-2024:v20240913"
+docker = "aparida12/brats-peds-2024:v20250123"
 
 # Dictionary to store intermediate results and paths
 mydict: Dict[str, Any] = {}
