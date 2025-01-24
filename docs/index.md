@@ -35,7 +35,7 @@ toolkits can be used for this purpose.
 
 Once the MRI sequences are uploaded, simply click the **Start Segmentation** button 
 to generate segmentation and volumetric measurements in the **Status** box. 
-The process typically takes around 8 minutes. Afterward, you can choose an MRI 
+The process typically takes around 5 minutes. Afterward, you can choose an MRI 
 sequence to visualize both the image and the segmentation in axial, coronal, and sagittal views 
 using the interactive **Sliders**. Segmentation results can be downloaded in 
 NIfTI format by clicking the **Download Segmentation File** button.  
