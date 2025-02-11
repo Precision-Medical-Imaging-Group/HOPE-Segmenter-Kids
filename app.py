@@ -391,7 +391,7 @@ with gr.Blocks(title="Pediatric Segmenter") as demo:
         value=f"<p style='margin-top: 1rem; margin-bottom: 1rem'> <img src='{logo}' alt='Childrens National Logo' style='display: inline-block'/></p>"
     )
     gr.HTML(
-        value=f"<justify><font size='4'> Welcome to the pediatric brain tumor segmenter. Please read the <a href='https://docs.hope4kids.io/HOPE-Segmenter-Kids/'>instructions</a> before using the application. Partial support for this work is provided by the NIH- National Cancer Institute grant UG3-UH3 CA236536. </font></justify>"
+        value=f"<justify><font size='4'> Welcome to the pediatric brain tumor segmenter. Partial support for this work is provided by the NIH- National Cancer Institute grant UG3-UH3 CA236536. </font></justify>"
     )
 
     # File Uploads
@@ -409,15 +409,26 @@ with gr.Blocks(title="Pediatric Segmenter") as demo:
         image_t2w = gr.File(
             label="Upload T2 Weighted Here:", file_types=[".gz"]
         )
-
-    # Segmentation Button
+    with gr.Row():
+        with gr.Column():
+            pass
+        with gr.Column():
+            enable_checkbox = gr.Checkbox(label="I have read the instructions and accept the terms.", value=False, info="#### Please read the [instructions](https://docs.hope4kids.io/HOPE-Segmenter-Kids/) before using the app.", container=False)
+        with gr.Column():
+            pass    # Segmentation Button
     with gr.Row():
         with gr.Column():
             gr.Button("", visible=False)  # Spacer
         with gr.Column():
-            btn = gr.Button("Start Segmentation")
+            btn = gr.Button("Start Segmentation", interactive=False)
         with gr.Column():
             gr.Button("", visible=False)  # Spacer
+
+    enable_checkbox.change(
+        lambda checked: gr.update(interactive=checked),
+        inputs=[enable_checkbox],
+        outputs=[btn],
+    )
 
     # Status Output
     with gr.Column():
