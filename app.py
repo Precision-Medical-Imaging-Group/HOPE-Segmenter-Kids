@@ -99,7 +99,8 @@ def run_inference(
     os.makedirs(output_folder, exist_ok=True)
     
     # Define paths for the output segmentation
-    output_path = output_folder / f"seg_{image_t1c.name}"
+    output_fname = image_t1c.name.replace("-t1c.nii.gz", "-seg.nii.gz")
+    output_path = output_folder / output_fname
     fake_output_path = output_folder / f"{DUMMY_DIR}.nii.gz"
 
     # MOVE each image to the input directory with the dummy filenames
