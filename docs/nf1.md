@@ -52,6 +52,8 @@ This web app was made possible due to the efforts made by
 If you use and/or refer to this software in your research, please cite the following papers: 
 
 * Jiang, Z., Parida, A., Anwar, S.M., Tang, Y., Roth, H.R., Fisher, M.J., Packer, R.J., Avery, R.A. and Linguraru, M.G., 2023, July. "Automatic Visual Acuity Loss Prediction in Children with Optic Pathway Gliomas using Magnetic Resonance Imaging". In *2023 45th Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC)*, Sydney, Australia (pp. 1-5). doi: [10.1109/EMBC40787.2023.10339961](https://ieeexplore.ieee.org/abstract/document/10339961)
+* Avery, R.A., Mansoor, A., Liu, G.T., Trimboli− Heidler, C., Ying, G.S., Centrella, C.R., Eltoukhy, N., Packer, R.J., Fisher, M.J. and Linguraru, M.G., 2023. Larger tumor volume is associated with visual acuity loss and axonal degeneration in children with optic pathway gliomas secondary to neurofibromatosis type 1. *Neuro-Oncology Advances, 5(1)*, p.vdad107. doi:[10.1093/noajnl/vdad107](https://doi.org/10.1093/noajnl/vdad107)
+* Avery, R.A., Mansoor, A., Idrees, R., Trimboli-Heidler, C., Ishikawa, H., Packer, R.J. and Linguraru, M.G., 2016. Optic pathway glioma volume predicts retinal axon degeneration in neurofibromatosis type 1. *Neurology, 87(23)*, pp.2403-2407. doi:[10.1212/WNL.000000000000340](https://doi.org/10.1212/WNL.000000000000340)
 
 # Disclaimer
 
